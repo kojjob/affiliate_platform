@@ -1,0 +1,28 @@
+{
+  "node": {
+    "001afc733e3fd9798dd0c561af329885df9066ea1a": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/.pnpm/next@15.1.4_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fkojo%2FWorkspace%2Fmvp_affiliate_platform%2Fsrc%2Fapp%2Fcounter.ts%22%2C%5B%5B%22001afc733e3fd9798dd0c561af329885df9066ea1a%22%2C%22incrementAndLog%22%5D%2C%5B%2200a59d07f670db2889ca7b95a7eb3b86bcfa3ce273%22%2C%22getStats%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      }
+    },
+    "00a59d07f670db2889ca7b95a7eb3b86bcfa3ce273": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/.pnpm/next@15.1.4_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fkojo%2FWorkspace%2Fmvp_affiliate_platform%2Fsrc%2Fapp%2Fcounter.ts%22%2C%5B%5B%22001afc733e3fd9798dd0c561af329885df9066ea1a%22%2C%22incrementAndLog%22%5D%2C%5B%2200a59d07f670db2889ca7b95a7eb3b86bcfa3ce273%22%2C%22getStats%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "rG+pRdqQfse1FA/LANhyrVnkDIc3iyImbcqYDo8V6Ik="
+}
