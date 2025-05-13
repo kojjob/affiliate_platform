@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react";
 import { useRouter } from "next/navigation"; // Corrected import for App Router
 
@@ -117,4 +119,3 @@ export default function AddProductPage() {
     </div>
   );
 }
-
