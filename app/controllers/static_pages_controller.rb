@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
     @featured_products = mock_featured_products
     @affiliate_stats = mock_affiliate_stats
     @categories = mock_categories
-    
+
     # Home page specific SEO
     @page_title = "AffiliateMarket - Shop & Earn with Top Brands | Best Affiliate Marketing Platform"
     @page_description = "Join 10,000+ affiliates earning passive income. Shop premium products and earn up to 25% commission. Start your affiliate marketing journey today - Free to join!"
@@ -22,7 +22,7 @@ class StaticPagesController < ApplicationController
     @page_title = "How AffiliateMarket Works - Step by Step Guide to Earning"
     @page_description = "Learn how to start earning with AffiliateMarket in 3 simple steps. Complete guide to affiliate marketing, commission structures, and payout methods."
     @page_keywords = "how affiliate marketing works, earn commission, affiliate guide, make money online guide, passive income tutorial"
-    
+
     @steps = how_it_works_steps
     @commission_tiers = commission_tier_data
   end
@@ -37,7 +37,7 @@ class StaticPagesController < ApplicationController
     @page_title = "Join AffiliateMarket Program - Earn Up to 25% Commission"
     @page_description = "Start earning today with AffiliateMarket's affiliate program. High commissions, top brands, marketing tools, and weekly payouts. Free to join!"
     @page_keywords = "affiliate program, join affiliate marketing, earn commission, affiliate partnership, influencer program"
-    
+
     @program_benefits = affiliate_program_benefits
     @commission_rates = commission_rates_data
     @payout_methods = payout_methods_data
@@ -47,7 +47,7 @@ class StaticPagesController < ApplicationController
     @page_title = "Getting Started with AffiliateMarket - Complete Beginner's Guide"
     @page_description = "Complete beginner's guide to affiliate marketing with AffiliateMarket. Learn account setup, product selection, link generation, and optimization tips."
     @page_keywords = "affiliate marketing guide, getting started, beginner affiliate, setup guide, affiliate tutorial"
-    
+
     @setup_steps = getting_started_steps
     @quick_wins = quick_wins_data
   end
@@ -56,7 +56,7 @@ class StaticPagesController < ApplicationController
     @page_title = "AffiliateMarket Commission Rates - Detailed Breakdown by Category"
     @page_description = "Comprehensive guide to AffiliateMarket commission rates. See exact percentages, tier bonuses, and earning potential across all product categories."
     @page_keywords = "affiliate commission rates, earnings, percentage, tier bonuses, affiliate income"
-    
+
     @detailed_commission_rates = detailed_commission_rates_data
     @tier_bonuses = tier_bonus_data
     @earning_examples = earning_examples_data
@@ -66,7 +66,7 @@ class StaticPagesController < ApplicationController
     @page_title = "AffiliateMarket Payment Methods - How and When You Get Paid"
     @page_description = "Complete guide to AffiliateMarket payment methods, schedules, and requirements. Multiple payout options with fast processing times."
     @page_keywords = "affiliate payments, payout methods, payment schedule, affiliate earnings, withdrawal methods"
-    
+
     @detailed_payment_methods = detailed_payment_methods_data
     @payment_schedule = payment_schedule_data
   end
@@ -75,7 +75,7 @@ class StaticPagesController < ApplicationController
     @page_title = "AffiliateMarket Marketing Tools - Banners, Links & Resources"
     @page_description = "Access professional marketing tools, banners, product feeds, and promotional materials to maximize your affiliate marketing success."
     @page_keywords = "affiliate marketing tools, banners, promotional materials, affiliate resources, marketing assets"
-    
+
     @marketing_tools_list = marketing_tools_data
     @banner_sizes = banner_sizes_data
   end
@@ -84,7 +84,7 @@ class StaticPagesController < ApplicationController
     @page_title = "AffiliateMarket Support Center - Help & Documentation"
     @page_description = "Get help with your AffiliateMarket account. Browse FAQs, video tutorials, and contact options for technical support and guidance."
     @page_keywords = "affiliate support, help center, FAQ, tutorials, customer service, affiliate assistance"
-    
+
     @support_categories = support_categories_data
     @popular_articles = popular_articles_data
   end
@@ -93,7 +93,7 @@ class StaticPagesController < ApplicationController
     @page_title = "AffiliateMarket Press - News, Media Kit & Company Updates"
     @page_description = "Latest news, press releases, and media resources for AffiliateMarket. Download logos, access company information, and contact our media team."
     @page_keywords = "affiliate marketing news, press releases, media kit, company news, AffiliateMarket press"
-    
+
     @press_releases = press_releases_data
     @company_stats = company_stats_data
     @media_coverage = media_coverage_data
@@ -103,7 +103,7 @@ class StaticPagesController < ApplicationController
     @page_title = "Partner With AffiliateMarket - Join Our Merchant Program"
     @page_description = "Join AffiliateMarket's merchant program and access thousands of affiliates to promote your products. Increase sales with performance-based marketing."
     @page_keywords = "merchant program, brand partnership, affiliate network, increase sales, performance marketing, merchant platform"
-    
+
     @partnership_benefits = partnership_benefits_data
     @merchant_stats = merchant_stats_data
     @integration_options = integration_options_data
@@ -241,25 +241,25 @@ class StaticPagesController < ApplicationController
         platform: "Shopify",
         description: "One-click app installation with automatic product syncing",
         setup_time: "5 minutes",
-        features: ["Auto product sync", "Order tracking", "Commission calculation"]
+        features: [ "Auto product sync", "Order tracking", "Commission calculation" ]
       },
       {
         platform: "WooCommerce",
         description: "WordPress plugin with full e-commerce integration",
         setup_time: "10 minutes",
-        features: ["Product catalog sync", "Customer tracking", "Analytics dashboard"]
+        features: [ "Product catalog sync", "Customer tracking", "Analytics dashboard" ]
       },
       {
         platform: "API Integration",
         description: "Custom integration for any platform using our REST API",
         setup_time: "1-3 days",
-        features: ["Full API access", "Custom tracking", "Webhook support"]
+        features: [ "Full API access", "Custom tracking", "Webhook support" ]
       },
       {
         platform: "Magento",
         description: "Native extension for Magento 2.x installations",
         setup_time: "15 minutes",
-        features: ["Multi-store support", "Advanced reporting", "Custom commission rules"]
+        features: [ "Multi-store support", "Advanced reporting", "Custom commission rules" ]
       }
     ]
   end
@@ -567,37 +567,37 @@ class StaticPagesController < ApplicationController
         category: "Account Management",
         icon: "👤",
         articles: 12,
-        topics: ["Profile setup", "Password reset", "Account verification", "Settings"]
+        topics: [ "Profile setup", "Password reset", "Account verification", "Settings" ]
       },
       {
         category: "Link Generation",
         icon: "🔗",
         articles: 8,
-        topics: ["Creating links", "Tracking parameters", "Link customization", "Bulk generation"]
+        topics: [ "Creating links", "Tracking parameters", "Link customization", "Bulk generation" ]
       },
       {
         category: "Payments & Earnings",
         icon: "💰",
         articles: 15,
-        topics: ["Payment methods", "Tax information", "Earning reports", "Payment schedules"]
+        topics: [ "Payment methods", "Tax information", "Earning reports", "Payment schedules" ]
       },
       {
         category: "Marketing Guidelines",
         icon: "📋",
         articles: 10,
-        topics: ["FTC compliance", "Brand guidelines", "Prohibited practices", "Best practices"]
+        topics: [ "FTC compliance", "Brand guidelines", "Prohibited practices", "Best practices" ]
       },
       {
         category: "Technical Support",
         icon: "🔧",
         articles: 20,
-        topics: ["API documentation", "Integration guides", "Troubleshooting", "Browser issues"]
+        topics: [ "API documentation", "Integration guides", "Troubleshooting", "Browser issues" ]
       },
       {
         category: "Program Policies",
         icon: "📜",
         articles: 6,
-        topics: ["Terms of service", "Commission structure", "Program updates", "Violation policies"]
+        topics: [ "Terms of service", "Commission structure", "Program updates", "Violation policies" ]
       }
     ]
   end
@@ -647,7 +647,7 @@ class StaticPagesController < ApplicationController
         icon: "👤"
       },
       {
-        number: "02", 
+        number: "02",
         title: "Choose Products",
         description: "Browse our marketplace and select products you love from top brands.",
         details: "Access exclusive deals and high-commission products",
@@ -686,7 +686,7 @@ class StaticPagesController < ApplicationController
       },
       {
         icon: "📊",
-        title: "Real-Time Analytics", 
+        title: "Real-Time Analytics",
         description: "Track clicks, conversions, and earnings with detailed reporting."
       },
       {
@@ -823,58 +823,58 @@ class StaticPagesController < ApplicationController
 
   def mock_categories
     [
-      { 
-        name: "Electronics", 
-        icon: "⚡", 
+      {
+        name: "Electronics",
+        icon: "⚡",
         count: 1250,
         description: "Latest gadgets and electronic devices",
         slug: "electronics"
       },
-      { 
-        name: "Fashion", 
-        icon: "👔", 
+      {
+        name: "Fashion",
+        icon: "👔",
         count: 890,
         description: "Trending fashion and accessories",
         slug: "fashion"
       },
-      { 
-        name: "Home & Garden", 
-        icon: "🏠", 
+      {
+        name: "Home & Garden",
+        icon: "🏠",
         count: 567,
         description: "Home improvement and garden essentials",
         slug: "home-garden"
       },
-      { 
-        name: "Sports & Fitness", 
-        icon: "🏃", 
+      {
+        name: "Sports & Fitness",
+        icon: "🏃",
         count: 432,
         description: "Fitness equipment and sportswear",
         slug: "sports-fitness"
       },
-      { 
-        name: "Books & Media", 
-        icon: "📚", 
+      {
+        name: "Books & Media",
+        icon: "📚",
         count: 234,
         description: "Books, courses, and digital media",
         slug: "books-media"
       },
-      { 
-        name: "Health & Beauty", 
-        icon: "💄", 
+      {
+        name: "Health & Beauty",
+        icon: "💄",
         count: 345,
         description: "Health supplements and beauty products",
         slug: "health-beauty"
       },
-      { 
-        name: "Automotive", 
-        icon: "🚗", 
+      {
+        name: "Automotive",
+        icon: "🚗",
         count: 123,
         description: "Car accessories and automotive tools",
         slug: "automotive"
       },
-      { 
-        name: "Food & Beverages", 
-        icon: "🍕", 
+      {
+        name: "Food & Beverages",
+        icon: "🍕",
         count: 678,
         description: "Gourmet food and specialty beverages",
         slug: "food-beverages"

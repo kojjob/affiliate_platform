@@ -1,7 +1,6 @@
 xml.instruct! :xml, version: "1.0", encoding: "UTF-8"
 xml.urlset xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
           "xmlns:image": "http://www.google.com/schemas/sitemap-image/1.1" do
-  
   # Static pages
   @static_pages.each do |page|
     xml.url do
@@ -11,7 +10,7 @@ xml.urlset xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
       xml.priority page[:priority]
     end
   end
-  
+
   # Future: Add dynamic content URLs
   # Products sitemap entries
   # if defined?(@products) && @products.any?
@@ -21,7 +20,7 @@ xml.urlset xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
   #       xml.lastmod product.updated_at.strftime("%Y-%m-%d")
   #       xml.changefreq "weekly"
   #       xml.priority 0.8
-  #       
+  #
   #       # Add product image
   #       if product.image.present?
   #         xml.image:image do
@@ -33,7 +32,7 @@ xml.urlset xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
   #     end
   #   end
   # end
-  
+
   # Categories sitemap entries
   # if defined?(@categories) && @categories.any?
   #   @categories.each do |category|

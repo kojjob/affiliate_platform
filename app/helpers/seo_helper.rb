@@ -7,26 +7,26 @@ module SeoHelper
         content_for(:title, base_title)
       end
     end
-  
+
     def page_description(description = nil)
       default_description = "Join thousands earning passive income through affiliate marketing. Shop top products and earn up to 25% commission. Start your affiliate journey today!"
       content_for(:description, description.presence || default_description)
     end
-  
+
     def page_keywords(keywords = nil)
       default_keywords = "affiliate marketing, earn money online, passive income, commission, online shopping, affiliate program, make money shopping"
       content_for(:keywords, keywords.presence || default_keywords)
     end
-  
+
     def page_canonical(url = nil)
       content_for(:canonical, url.presence || request.original_url)
     end
-  
+
     def page_image(image_url = nil)
       default_image = "#{request.base_url}/assets/affiliate-market-og.jpg"
       content_for(:og_image, image_url.presence || default_image)
     end
-  
+
     def structured_data_organization
       {
         "@context": "https://schema.org",
@@ -52,7 +52,7 @@ module SeoHelper
         }
       }.to_json.html_safe
     end
-  
+
     def structured_data_website
       {
         "@context": "https://schema.org",
@@ -67,10 +67,10 @@ module SeoHelper
         }
       }.to_json.html_safe
     end
-  
+
     def structured_data_product(product)
       return unless product
-  
+
       {
         "@context": "https://schema.org",
         "@type": "Product",
@@ -100,7 +100,7 @@ module SeoHelper
         }
       }.to_json.html_safe
     end
-  
+
     def structured_data_breadcrumb(items)
       breadcrumb_list = {
         "@context": "https://schema.org",
@@ -119,7 +119,7 @@ module SeoHelper
       }
       breadcrumb_list.to_json.html_safe
     end
-  
+
     def robots_meta(index: true, follow: true, snippet: true, archive: true)
       directives = []
       directives << (index ? "index" : "noindex")
@@ -128,7 +128,7 @@ module SeoHelper
       directives << "noarchive" unless archive
       directives.join(", ")
     end
-  
+
     def hreflang_tags
       # Add international language support
       content_for(:hreflang) do
@@ -138,7 +138,7 @@ module SeoHelper
         end
       end
     end
-  
+
     def preload_critical_assets
       content_for(:preload) do
         capture do
@@ -148,4 +148,4 @@ module SeoHelper
         end
       end
     end
-  end
+end
