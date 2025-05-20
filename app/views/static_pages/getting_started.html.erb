@@ -1,0 +1,342 @@
+<% page_title(@page_title) %>
+<% page_description(@page_description) %>
+<% page_keywords(@page_keywords) %>
+<% page_canonical(getting_started_url) %>
+
+<% content_for :structured_data do %>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Getting Started with AffiliateMarket",
+      "description": "Complete beginner's guide to starting affiliate marketing with AffiliateMarket",
+      "totalTime": "PT15M",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "0"
+      },
+      "step": [
+        <% @setup_steps.each_with_index do |step, index| %>
+          {
+            "@type": "HowToStep",
+            "name": "<%= step[:title] %>",
+            "text": "<%= step[:description] %>",
+            "position": <%= step[:step] %>,
+            "estimatedCost": {
+              "@type": "MonetaryAmount",
+              "currency": "USD",
+              "value": "0"
+            }
+          }<%= index < @setup_steps.length - 1 ? ',' : '' %>
+        <% end %>
+      ]
+    }
+  </script>
+<% end %>
+
+<!-- Breadcrumb Navigation -->
+<nav aria-label="Breadcrumb" class="bg-slate-50 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+    <ol class="flex items-center space-x-2 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="<%= root_path %>" itemprop="item" class="text-slate-600 hover:text-orange-500 transition-colors">
+          <span itemprop="name">Home</span>
+        </a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li class="text-slate-400">›</li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name" class="text-slate-900 font-medium">Getting Started</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-indigo-900 via-purple-800 to-orange-600 text-white py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+      Getting Started Guide
+    </h1>
+    <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+      Everything you need to know to start earning with affiliate marketing. 
+      From account setup to your first commission.
+    </p>
+    <div class="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full">
+      <span class="text-white font-medium">⏱️ Complete setup in just 15 minutes</span>
+    </div>
+  </div>
+</section>
+
+<!-- Setup Steps -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Step-by-Step Setup</h2>
+      <p class="text-lg text-slate-600">Follow these steps to get your affiliate marketing journey started</p>
+    </div>
+    
+    <div class="space-y-12">
+      <% @setup_steps.each_with_index do |step, index| %>
+        <div class="flex flex-col lg:flex-row items-start gap-8 <%= index.even? ? '' : 'lg:flex-row-reverse' %>">
+          <!-- Step Number & Time -->
+          <div class="flex-shrink-0 text-center lg:text-left">
+            <div class="w-20 h-20 bg-gradient-to-r from-indigo-900 to-orange-500 rounded-full flex items-center justify-center mb-4 mx-auto lg:mx-0">
+              <span class="text-2xl font-bold text-white"><%= step[:step] %></span>
+            </div>
+            <div class="text-sm text-slate-500">
+              Estimated time: <span class="font-medium text-slate-700"><%= step[:time] %></span>
+            </div>
+          </div>
+          
+          <!-- Step Content -->
+          <div class="flex-1 <%= index.even? ? 'lg:pr-12' : 'lg:pl-12' %>">
+            <h3 class="text-2xl font-bold text-slate-900 mb-4"><%= step[:title] %></h3>
+            <p class="text-lg text-slate-600 mb-6"><%= step[:description] %></p>
+            
+            <!-- Step Details -->
+            <div class="bg-slate-50 rounded-2xl p-6">
+              <h4 class="font-semibold text-slate-900 mb-4">What you'll do:</h4>
+              <ul class="space-y-3">
+                <% step[:details].each do |detail| %>
+                  <li class="flex items-start">
+                    <span class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-0.5">
+                      <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                      </svg>
+                    </span>
+                    <span class="text-slate-700"><%= detail %></span>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Illustration placeholder -->
+          <div class="flex-shrink-0 <%= index.even? ? 'lg:order-last' : 'lg:order-first' %>">
+            <div class="w-64 h-48 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center">
+              <span class="text-4xl opacity-50">
+                <%= step[:step] == 1 ? "👤" : step[:step] == 2 ? "🛍️" : step[:step] == 3 ? "🔗" : "📊" %>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Wins -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Quick Wins for Beginners</h2>
+      <p class="text-lg text-slate-600">Simple strategies to get your first sales faster</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <% @quick_wins.each do |win| %>
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 text-center group hover:scale-105">
+          <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+            <%= win[:icon] %>
+          </div>
+          <h3 class="font-semibold text-slate-900 mb-3"><%= win[:title] %></h3>
+          <p class="text-slate-600 text-sm"><%= win[:description] %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Beginner's Checklist -->
+<section class="py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Your First Week Checklist</h2>
+      <p class="text-lg text-slate-600">Essential tasks to complete in your first 7 days</p>
+    </div>
+    
+    <div class="bg-slate-50 rounded-3xl p-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Day 1-3 -->
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-4 flex items-center">
+            <span class="w-8 h-8 bg-indigo-900 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1-3</span>
+            Days 1-3: Setup & Learning
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <input type="checkbox" class="mt-1 mr-3 rounded text-orange-500 focus:ring-orange-500">
+              <span class="text-slate-700">Complete account registration and verification</span>
+            </li>
+            <li class="flex items-start">
+              <input type="checkbox" class="mt-1 mr-3 rounded text-orange-500 focus:ring-orange-500">
+              <span class="text-slate-700">Read all program guidelines and policies</span>
+            </li>
+            <li class="flex items-start">
+              <input type="checkbox" class="mt-1 mr-3 rounded text-orange-500 focus:ring-orange-500">
+              <span class="text-slate-700">Browse product categories and commission rates</span>
+            </li>
+            <li class="flex items-start">
+              <input type="checkbox" class="mt-1 mr-3 rounded text-orange-500 focus:ring-orange-500">
+              <span class="text-slate-700">Watch getting started video tutorials</span>
+            </li>
+            <li class="flex items-start">
+              <input type="checkbox" class="mt-1 mr-3 rounded text-orange-500 focus:ring-orange-500">
+              <span class="text-slate-700">Set up your preferred payment method</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Day 4-7 -->
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-4 flex items-center">
+            <span class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">4-7</span>
+            Days 4-7: First Promotions
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <input type="checkbox" class="mt-1 mr-3 rounded text-orange-500 focus:ring-orange-500">
+              <span class="text-slate-700">Generate your first 3 affiliate links</span>
+            </li>
+            <li class="flex items-start">
+              <input type="checkbox" class="mt-1 mr-3 rounded text-orange-500 focus:ring-orange-500">
+              <span class="text-slate-700">Download and customize marketing materials</span>
+            </li>
+            <li class="flex items-start">
+              <input type="checkbox" class="mt-1 mr-3 rounded text-orange-500 focus:ring-orange-500">
+              <span class="text-slate-700">Share your first link on social media</span>
+            </li>
+            <li class="flex items-start">
+              <input type="checkbox" class="mt-1 mr-3 rounded text-orange-500 focus:ring-orange-500">
+              <span class="text-slate-700">Write your first product review or recommendation</span>
+            </li>
+            <li class="flex items-start">
+              <input type="checkbox" class="mt-1 mr-3 rounded text-orange-500 focus:ring-orange-500">
+              <span class="text-slate-700">Check your analytics dashboard daily</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Common Mistakes -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Common Mistakes to Avoid</h2>
+      <p class="text-lg text-slate-600">Learn from others' mistakes and start strong</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 15c-.77.833.192 2.5 1.732 2.5z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">No FTC Disclosure</h3>
+        <p class="text-slate-600 text-sm">Always disclose affiliate relationships with #ad or #affiliate. It's legally required and builds trust.</p>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Promoting Everything</h3>
+        <p class="text-slate-600 text-sm">Focus on products you know and love. Authentic recommendations convert better than scattered promotions.</p>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Ignoring Analytics</h3>
+        <p class="text-slate-600 text-sm">Check your dashboard regularly. Understanding what works helps you optimize and earn more.</p>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Expecting Instant Results</h3>
+        <p class="text-slate-600 text-sm">Affiliate marketing takes time. Focus on building relationships and providing value to your audience.</p>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L5.636 5.636"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Spamming Links</h3>
+        <p class="text-slate-600 text-sm">Quality over quantity. Share links naturally within helpful content, not as stand-alone promotions.</p>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Not Reading Terms</h3>
+        <p class="text-slate-600 text-sm">Each merchant has different rules. Read and follow all program terms to avoid account suspension.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Next Steps -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold text-slate-900 mb-4">Ready for Next Steps?</h2>
+    <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+      You've got the basics down. Now dive deeper into our resources to maximize your earning potential.
+    </p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <div class="bg-slate-50 rounded-2xl p-6 text-center hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-2">Commission Rates</h3>
+        <p class="text-slate-600 text-sm mb-4">Learn about our detailed commission structure and tier bonuses.</p>
+        <%= link_to "View Rates", commission_rates_path, class: "text-orange-500 hover:text-orange-600 font-medium" %>
+      </div>
+      
+      <div class="bg-slate-50 rounded-2xl p-6 text-center hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-2">Marketing Tools</h3>
+        <p class="text-slate-600 text-sm mb-4">Access banners, product feeds, and promotional materials.</p>
+        <%= link_to "Get Tools", marketing_tools_path, class: "text-orange-500 hover:text-orange-600 font-medium" %>
+      </div>
+      
+      <div class="bg-slate-50 rounded-2xl p-6 text-center hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-2">Support Center</h3>
+        <p class="text-slate-600 text-sm mb-4">Find answers to common questions and get expert help.</p>
+        <%= link_to "Get Help", support_center_path, class: "text-orange-500 hover:text-orange-600 font-medium" %>
+      </div>
+    </div>
+  </div>
+</section>
