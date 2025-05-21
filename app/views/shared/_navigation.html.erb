@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/60" 
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/60"
      data-controller="navigation">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
@@ -26,8 +26,8 @@
       <!-- Search Bar -->
       <div class="hidden md:block flex-1 max-w-md mx-8">
         <div class="relative">
-          <input type="text" 
-                 placeholder="Search products..." 
+          <input type="text"
+                 placeholder="Search products..."
                  class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white/50 backdrop-blur-sm">
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,13 +48,50 @@
         </button>
 
         <!-- Profile/Auth -->
-        <div class="flex items-center space-x-2">
-          <%= link_to "Sign In", "#", class: "text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors" %>
-          <%= link_to "Join Now", "#", class: "bg-gradient-to-r from-indigo-900 to-orange-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-indigo-800 hover:to-orange-400 transition-all duration-200 transform hover:scale-105" %>
-        </div>
+        <% if user_signed_in? %>
+          <!-- Desktop User Dropdown -->
+          <div class="relative hidden md:inline-block" data-controller="dropdown">
+            <button data-action="click->dropdown#toggle" class="align-middle rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 flex items-center space-x-2">
+              <%# Placeholder for user image or name %>
+              <span class="text-slate-700 hover:text-indigo-900 text-sm font-medium transition-colors">
+                <%= current_user.first_name || current_user.email %>
+              </span>
+              <svg class="h-4 w-4 fill-current text-slate-700" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div data-dropdown-target="menu" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+              <div class="py-1" role="none">
+                <%= link_to edit_user_registration_path, class: "flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-indigo-900 transition-colors", role: "menuitem" do %>
+                  <svg class="mr-2 h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                  </svg>
+                  Profile
+                <% end %>
+                <%= link_to "#", class: "flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-indigo-900 transition-colors", role: "menuitem" do %>
+                  <svg class="mr-2 h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2.1v1.952h-1.952a1 1 0 01-1.046-.952V2.1a1 1 0 011.046-1.046h1.952zM1.046 8.7A1 1 0 012.1 8h1.952v1.952a1 1 0 01.952 1.046H2.1a1 1 0 01-1.046-.952V8zM8 18.954a1 1 0 01-1.046 1.046H5.002v-1.952a1 1 0 01-.952-1.046h1.952a1 1 0 011.046.952v1.952zM18.954 12a1 1 0 011.046-.952v-1.952h-1.952a1 1 0 01-.952-1.046v1.952a1 1 0 01.952 1.046h1.952zM12 18.954a1 1 0 01-.952 1.046v1.952h1.952a1 1 0 011.046-.952v-1.952a1 1 0 01-.094-.952h-1.904zM1.046 12A1 1 0 012.1 12h1.952a1 1 0 01.952.094v1.904a1 1 0 01-1.046.952H2.1a1 1 0 01-1.046-.952v-1.904zM8 1.046A1 1 0 017.048 2.1H5.096a1 1 0 01-.952 1.046h1.952a1 1 0 011.046-.952V2.1zM18.954 8a1 1 0 011.046.952H21v1.904a1 1 0 01-.952 1.046h-1.952a1 1 0 01-1.046-.952V8z" clip-rule="evenodd" />
+                  </svg>
+                  Settings
+                <% end %>
+                <%= button_to destroy_user_session_path, method: :delete, class: "flex w-full items-center px-4 py-2 text-sm text-left text-slate-700 hover:bg-slate-100 hover:text-indigo-900 transition-colors", role: "menuitem", form: { data: { turbo: false } } do %>
+                  <svg class="mr-2 h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm7.95 6.45a1 1 0 10-1.41-1.41L5.3 12.79a1 1 0 101.42 1.42L10 7.86zM18 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1z" clip-rule="evenodd" />
+                  </svg>
+                  Sign Out
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="flex items-center space-x-2 hidden md:flex">
+            <%= link_to "Sign In", new_user_session_path, class: "text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors" %>
+            <%= link_to "Join Now", new_user_registration_path, class: "bg-gradient-to-r from-indigo-900 to-orange-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-indigo-800 hover:to-orange-400 transition-all duration-200 transform hover:scale-105" %>
+          </div>
+        <% end %>
 
         <!-- Mobile menu button -->
-        <button class="md:hidden p-2 text-slate-700 hover:text-indigo-900" 
+        <button class="md:hidden p-2 text-slate-700 hover:text-indigo-900"
                 data-action="click->navigation#toggleMobile">
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -66,15 +103,28 @@
     <!-- Mobile Navigation Menu -->
     <div class="md:hidden hidden" data-navigation-target="mobileMenu">
       <div class="px-2 pt-2 pb-3 space-y-1 bg-white/90 backdrop-blur-md rounded-lg mt-2 border border-slate-200">
+        <% if user_signed_in? %>
+          <!-- Mobile User Info -->
+          <div class="flex items-center space-x-2 mb-4">
+            <%# Placeholder for user image or name %>
+            <span class="text-slate-700 text-base font-medium"><%= current_user.first_name || current_user.email %></span>
+          </div>
+          <%= link_to "Profile", edit_user_registration_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
+          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "w-full text-left px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
+        <% else %>
+          <%= link_to "Sign In", new_user_session_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
+          <%= link_to "Join Now", new_user_registration_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
+        <% end %>
+
         <%= link_to "Products", "#", class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
         <%= link_to "Categories", "#", class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
-        <%= link_to "How It Works", "#", class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
-        <%= link_to "Affiliate Program", "#", class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
-        
+        <%= link_to "How It Works", how_it_works_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
+        <%= link_to "Affiliate Program", affiliate_program_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
+
         <div class="border-t border-slate-200 pt-3 mt-3">
           <div class="px-3 py-2">
-            <input type="text" 
-                   placeholder="Search products..." 
+            <input type="text"
+                   placeholder="Search products..."
                    class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-transparent">
           </div>
         </div>

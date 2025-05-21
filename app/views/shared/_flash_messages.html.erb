@@ -1,0 +1,42 @@
+<% if flash.any? %>
+  <div class="fixed top-20 right-4 z-50 space-y-2" data-controller="flash-messages">
+    <% flash.each do |type, message| %>
+      <div class="<%= flash_class(type) %> border rounded-lg p-4 shadow-lg backdrop-blur-sm bg-opacity-90 max-w-md transition-all duration-300 transform translate-x-0" 
+           data-flash-messages-target="message"
+           data-action="click->flash-messages#dismiss">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <% case type.to_sym %>
+            <% when :notice, :success %>
+              <svg class="h-5 w-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            <% when :error %>
+              <svg class="h-5 w-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            <% when :alert %>
+              <svg class="h-5 w-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-2.694-.833-3.464 0L3.35 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+              </svg>
+            <% else %>
+              <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            <% end %>
+          </div>
+          <div class="ml-3 flex-1">
+            <p class="text-sm font-medium"><%= message %></p>
+          </div>
+          <div class="ml-4 flex-shrink-0">
+            <button class="inline-flex text-gray-400 hover:text-gray-600 focus:outline-none focus:text-gray-600 transition ease-in-out duration-150" data-action="click->flash-messages#dismiss">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
