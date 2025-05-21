@@ -1,5 +1,15 @@
 # config/routes.rb
 Rails.application.routes.draw do
+  namespace :admin do
+    get "dashboards/index"
+  end
+  namespace :affiliates do
+    get "dashboards/index"
+  end
+  namespace :traders do
+    get "dashboards/index"
+  end
+  devise_for :users
   # Root route
   root "static_pages#home"
 
