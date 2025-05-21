@@ -1,0 +1,398 @@
+<% content_for :title, "Join AffiliateMarket - Start Earning Today" %>
+<% content_for :description, "Join thousands of affiliates earning passive income. Sign up for AffiliateMarket and start earning up to 25% commission on every sale." %>
+
+<div class="pt-20 pb-12 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+  <!-- Animated Background Elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute top-1/3 left-1/4 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+  </div>
+
+  <!-- Registration Container -->
+  <div class="relative w-full max-w-7xl mx-auto z-10">
+    <div class="grid lg:grid-cols-5 gap-8 items-start">
+      
+      <!-- Left Side - Registration Form -->
+      <div class="lg:col-span-3 w-full">
+        <!-- Glassmorphism Card -->
+        <div class="bg-white/90 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-6 space-y-4">
+          <!-- Header -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-gradient-to-br from-slate-900 to-orange-500 rounded-xl flex items-center justify-center">
+                <span class="text-white font-bold text-xs">AM</span>
+              </div>
+              <span class="text-xl font-bold text-slate-900">AffiliateMarket</span>
+            </div>
+            <div class="text-right">
+              <h2 class="text-2xl font-bold text-slate-900">Join Our Program</h2>
+              <p class="text-sm text-slate-600">Start earning commissions today</p>
+            </div>
+          </div>
+          
+          <!-- Registration Form -->
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), 
+                       html: { class: "space-y-3", data: { controller: "form-validation" }}) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            
+            <!-- Name Fields Row -->
+            <div class="grid grid-cols-2 gap-3">
+              <!-- First Name -->
+              <div class="space-y-1">
+                <%= f.label :first_name, "First Name", class: "block text-xs font-medium text-slate-700" %>
+                <%= f.text_field :first_name, 
+                    autofocus: true,
+                    autocomplete: "given-name",
+                    placeholder: "First name",
+                    class: "w-full px-3 py-2 border border-slate-300 rounded-lg bg-white/50 backdrop-blur-sm 
+                            focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200
+                            text-slate-900 placeholder-slate-500 text-sm" %>
+              </div>
+              
+              <!-- Last Name -->
+              <div class="space-y-1">
+                <%= f.label :last_name, "Last Name", class: "block text-xs font-medium text-slate-700" %>
+                <%= f.text_field :last_name, 
+                    autocomplete: "family-name",
+                    placeholder: "Last name",
+                    class: "w-full px-3 py-2 border border-slate-300 rounded-lg bg-white/50 backdrop-blur-sm 
+                            focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200
+                            text-slate-900 placeholder-slate-500 text-sm" %>
+              </div>
+            </div>
+            
+            <!-- Email and Password Fields in Grid -->
+            <div class="grid md:grid-cols-2 gap-3">
+              <!-- Email Field -->
+              <div class="space-y-1">
+                <%= f.label :email, "Email Address", class: "block text-xs font-medium text-slate-700" %>
+                <div class="relative">
+                  <%= f.email_field :email, 
+                      autocomplete: "email",
+                      placeholder: "Enter your email address",
+                      class: "w-full px-3 py-2 pl-10 border border-slate-300 rounded-lg bg-white/50 backdrop-blur-sm 
+                              focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200
+                              text-slate-900 placeholder-slate-500 text-sm" %>
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Password Field -->
+              <div class="space-y-1">
+                <%= f.label :password, class: "block text-xs font-medium text-slate-700" do %>
+                  Password <% if @minimum_password_length %><span class="text-xs text-slate-500 font-normal">(<%= @minimum_password_length %> min)</span><% end %>
+                <% end %>
+                <div class="relative">
+                  <%= f.password_field :password, 
+                      autocomplete: "new-password",
+                      placeholder: "Create a secure password",
+                      class: "w-full px-3 py-2 pl-10 pr-10 border border-slate-300 rounded-lg bg-white/50 backdrop-blur-sm 
+                              focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200
+                              text-slate-900 placeholder-slate-500 text-sm" %>
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                  </div>
+                  <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center" data-action="click->form-validation#togglePassword">
+                    <svg class="h-4 w-4 text-slate-400 hover:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Confirm Password Field -->
+            <div class="space-y-1">
+              <%= f.label :password_confirmation, "Confirm Password", class: "block text-xs font-medium text-slate-700" %>
+              <div class="relative">
+                <%= f.password_field :password_confirmation, 
+                    autocomplete: "new-password",
+                    placeholder: "Confirm your password",
+                    class: "w-full px-3 py-2 pl-10 border border-slate-300 rounded-lg bg-white/50 backdrop-blur-sm 
+                            focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200
+                            text-slate-900 placeholder-slate-500 text-sm" %>
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Affiliate Program Toggle -->
+            <div class="bg-gradient-to-r from-orange-50 to-cyan-50 border border-orange-200/50 rounded-lg p-2 mb-2">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <div class="w-6 h-6 bg-gradient-to-br from-orange-400 to-cyan-400 rounded-lg flex items-center justify-center">
+                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.102m0 0l4-4a4 4 0 015.656-5.656l-1.102 1.102m-4 4l4-4m-4 4l-4 4"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-medium text-sm text-slate-900">Join Affiliate Program</div>
+                    <div class="text-xs text-slate-600">Start earning commissions immediately</div>
+                  </div>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <%= f.check_box :join_affiliate_program, 
+                      { checked: true, class: "sr-only peer" },
+                      "true", "false" %>
+                  <div class="w-9 h-5 bg-slate-200 rounded-full peer peer-focus:ring-2 peer-focus:ring-orange-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-cyan-400"></div>
+                </label>
+              </div>
+            </div>
+            
+            <!-- Additional Fields for Affiliates -->
+            <div class="grid md:grid-cols-2 gap-3" data-form-validation-target="affiliateFields">
+              <!-- Promo Code -->
+              <div class="space-y-1">
+                <%= f.label :promo_code, "Promo Code (Optional)", class: "block text-xs font-medium text-slate-700" %>
+                <div class="relative">
+                  <%= f.text_field :promo_code, 
+                      placeholder: "Enter promo code",
+                      class: "w-full px-3 py-2 pl-10 border border-slate-300 rounded-lg bg-white/50 backdrop-blur-sm 
+                              focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200
+                              text-slate-900 placeholder-slate-500 text-sm" %>
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Website URL -->
+              <div class="space-y-1">
+                <%= f.label :website_url, "Website/Social Media URL", class: "block text-xs font-medium text-slate-700" %>
+                <div class="relative">
+                  <%= f.url_field :website_url, 
+                      placeholder: "https://yourwebsite.com",
+                      class: "w-full px-3 py-2 pl-10 border border-slate-300 rounded-lg bg-white/50 backdrop-blur-sm 
+                              focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200
+                              text-slate-900 placeholder-slate-500 text-sm" %>
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Terms and Privacy -->
+            <div class="grid grid-cols-1 gap-2">
+              <div class="flex items-start">
+                <div class="flex items-center h-4">
+                  <input type="checkbox" required 
+                         class="h-3 w-3 text-orange-500 focus:ring-orange-500 border-slate-300 rounded">
+                </div>
+                <div class="ml-2 text-xs">
+                  <span class="text-slate-700">
+                    I agree to the 
+                    <a href="#" class="text-orange-500 hover:text-orange-600 font-medium">Terms of Service</a> 
+                    and 
+                    <a href="#" class="text-orange-500 hover:text-orange-600 font-medium">Privacy Policy</a>
+                  </span>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex items-center h-4">
+                  <input type="checkbox" 
+                         class="h-3 w-3 text-orange-500 focus:ring-orange-500 border-slate-300 rounded">
+                </div>
+                <div class="ml-2 text-xs">
+                  <span class="text-slate-700">
+                    I want to receive marketing emails about new products and opportunities
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Submit Button -->
+            <div>
+              <%= f.submit "Join Affiliate Program", 
+                  class: "w-full bg-gradient-to-r from-slate-900 to-orange-500 text-white py-2 px-4 rounded-lg 
+                          font-medium hover:from-slate-800 hover:to-orange-400 focus:ring-2 focus:ring-orange-500 
+                          focus:ring-offset-2 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]
+                          shadow-lg hover:shadow-xl text-sm" %>
+            </div>
+          <% end %>
+          
+          <!-- Social Registration and Sign In -->
+          <div class="mt-3">
+            <div class="relative mb-3">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-slate-300"></div>
+              </div>
+              <div class="relative flex justify-center text-xs">
+                <span class="px-2 bg-white text-slate-500">or continue with</span>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-2 mb-3">
+              <button class="w-full inline-flex justify-center py-2 border border-slate-300 rounded-lg bg-white/50 backdrop-blur-sm hover:bg-slate-50 transition-colors">
+                <svg class="h-4 w-4 text-slate-600" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                  <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+              </button>
+              
+              <button class="w-full inline-flex justify-center py-2 border border-slate-300 rounded-lg bg-white/50 backdrop-blur-sm hover:bg-slate-50 transition-colors">
+                <svg class="h-4 w-4 text-slate-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+              </button>
+              
+              <button class="w-full inline-flex justify-center py-2 border border-slate-300 rounded-lg bg-white/50 backdrop-blur-sm hover:bg-slate-50 transition-colors">
+                <svg class="h-4 w-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </button>
+            </div>
+          
+            <!-- Sign In Link -->
+            <div class="text-center border-t border-slate-200 pt-2">
+              <p class="text-xs text-slate-600">
+                Already have an account? 
+                <%= link_to "Sign in here", new_session_path(resource_name), 
+                    class: "font-medium text-orange-500 hover:text-orange-600 transition-colors" %>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Additional Links -->
+        <div class="mt-3 text-center">
+          <%= render "devise/shared/links" unless action_name == "new" %>
+        </div>
+      </div>
+      
+      <!-- Right Side - Illustration/Features -->
+      <div class="lg:col-span-2 hidden lg:flex flex-col items-center justify-center text-center space-y-6 relative z-10 mt-8">
+        <!-- Affiliate Marketing Illustration -->
+        <div class="relative">
+          <!-- Main Figure -->
+          <div class="relative">
+            <!-- Person Silhouette -->
+            <div class="w-24 h-32 bg-gradient-to-b from-orange-400 to-orange-600 rounded-full mx-auto relative">
+              <!-- Head -->
+              <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-slate-700 to-slate-900 rounded-full"></div>
+              <!-- Arms -->
+              <div class="absolute top-4 -left-8 w-16 h-4 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full transform rotate-12"></div>
+              <div class="absolute top-4 -right-8 w-16 h-4 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full transform -rotate-12"></div>
+            </div>
+          </div>
+          
+          <!-- Floating Elements Around -->
+          <!-- Link Icon -->
+          <div class="absolute -top-8 -left-16 animate-bounce">
+            <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center shadow-lg">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.102m0 0l4-4a4 4 0 015.656-5.656l-1.102 1.102m-4 4l4-4m-4 4l-4 4"></path>
+              </svg>
+            </div>
+          </div>
+          
+          <!-- Shopping Bag -->
+          <div class="absolute -top-4 -right-20 animate-float">
+            <div class="w-14 h-16 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center shadow-lg">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+              </svg>
+            </div>
+          </div>
+          
+          <!-- Money/Commission -->
+          <div class="absolute -bottom-8 -left-12 animate-float" style="animation-delay: 1s;">
+            <div class="w-16 h-10 bg-gradient-to-r from-orange-400 to-orange-600 rounded-lg flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">$$$</span>
+            </div>
+          </div>
+          
+          <!-- Credit Card -->
+          <div class="absolute -bottom-4 -right-16 animate-bounce" style="animation-delay: 0.5s;">
+            <div class="w-16 h-10 bg-gradient-to-br from-slate-700 to-slate-900 rounded-lg shadow-lg"></div>
+            <div class="absolute top-1 left-1 w-3 h-2 bg-gradient-to-r from-orange-400 to-cyan-400 rounded-sm"></div>
+          </div>
+          
+          <!-- Connecting Lines -->
+          <div class="absolute top-8 left-16 w-20 h-px bg-gradient-to-r from-cyan-400/60 to-orange-400/60"></div>
+          <div class="absolute top-12 right-12 w-16 h-px bg-gradient-to-r from-orange-400/60 to-cyan-400/60"></div>
+          <div class="absolute bottom-8 left-12 w-24 h-px bg-gradient-to-r from-orange-400/60 to-cyan-400/60"></div>
+        </div>
+        
+        <!-- Welcome Text -->
+        <div class="space-y-4">
+          <h1 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-cyan-100 to-orange-100 bg-clip-text text-transparent leading-tight">
+            Start Earning Today
+          </h1>
+          <p class="text-xl text-slate-300 max-w-md mx-auto leading-relaxed">
+            Join thousands of successful affiliates earning passive income with top brands
+          </p>
+        </div>
+        
+        <!-- Benefits -->
+        <div class="grid grid-cols-1 gap-6 max-w-sm">
+          <div class="flex items-center space-x-4 text-left">
+            <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="font-semibold text-white">Up to 25% Commission</div>
+              <div class="text-sm text-slate-300">Industry-leading rates</div>
+            </div>
+          </div>
+          
+          <div class="flex items-center space-x-4 text-left">
+            <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="font-semibold text-white">Instant Tracking</div>
+              <div class="text-sm text-slate-300">Real-time analytics</div>
+            </div>
+          </div>
+          
+          <div class="flex items-center space-x-4 text-left">
+            <div class="w-12 h-12 bg-gradient-to-br from-slate-700 to-slate-900 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="font-semibold text-white">Weekly Payouts</div>
+              <div class="text-sm text-slate-300">Fast & reliable payments</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Custom Animations -->
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+</style>

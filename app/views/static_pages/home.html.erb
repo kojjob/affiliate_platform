@@ -1,0 +1,375 @@
+<% page_title(@page_title) %>
+<% page_description(@page_description) %>
+<% page_keywords(@page_keywords) %>
+<% page_canonical(root_url) %>
+
+<% content_for :structured_data do %>
+  <!-- Products Structured Data -->
+  <% @featured_products.each do |product| %>
+    <script type="application/ld+json">
+      <%= structured_data_product(product) %>
+    </script>
+  <% end %>
+  
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much can I earn with affiliate marketing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can earn up to 25% commission on every sale. Top affiliates earn $10,000+ per month through our platform."
+          }
+        },
+        {
+          "@type": "Question", 
+          "name": "Is it free to join AffiliateMarket?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, joining AffiliateMarket is completely free. You can start earning commissions immediately after signing up."
+          }
+        }
+      ]
+    }
+  </script>
+<% end %>
+
+<!-- Breadcrumb Navigation -->
+<nav aria-label="Breadcrumb" class="hidden md:block bg-slate-50 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+    <ol class="flex items-center space-x-2 text-sm">
+      <li>
+        <a href="<%= root_path %>" class="text-slate-600 hover:text-orange-500 transition-colors">Home</a>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-cyan-50 overflow-hidden" itemscope itemtype="https://schema.org/WebPageElement">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23f1f5f9" fill-opacity="0.3"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+  
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-32">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <!-- Left Content -->
+      <div class="lg:col-span-7">
+        <div class="space-y-6">
+          <!-- Trust Badge -->
+          <div class="inline-flex items-center px-4 py-2 bg-white/60 backdrop-blur-sm border border-orange-200 rounded-full">
+            <span class="text-orange-600 font-medium text-sm">🚀 Earn up to 25% commission</span>
+          </div>
+          
+          <!-- Main Heading -->
+          <header>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
+              Shop & Earn
+              <span class="block bg-gradient-to-r from-indigo-900 via-purple-600 to-orange-500 bg-clip-text text-transparent">
+                With Every Purchase
+              </span>
+            </h1>
+          </header>
+          
+          <!-- Value Proposition -->
+          <p class="text-xl text-slate-600 max-w-2xl leading-relaxed">
+            Join thousands of smart shoppers and affiliates earning money while discovering amazing products. 
+            Start your journey to passive income today.
+          </p>
+          
+          <!-- Call-to-Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 pt-4">
+            <%= link_to "#shop", class: "group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-indigo-900 to-orange-500 text-white font-semibold rounded-xl hover:from-indigo-800 hover:to-orange-400 transition-all duration-300 transform hover:scale-105 hover:shadow-lg" do %>
+              Start Shopping & Earning
+              <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            <% end %>
+            
+            <%= link_to how_it_works_path, class: "inline-flex items-center justify-center px-8 py-4 border-2 border-slate-300 text-slate-700 font-semibold rounded-xl hover:border-indigo-900 hover:text-indigo-900 transition-all duration-300" do %>
+              Learn How It Works
+            <% end %>
+          </div>
+          
+          <!-- Trust Indicators -->
+          <div class="flex items-center space-x-6 pt-8">
+            <div class="flex items-center space-x-2">
+              <div class="flex -space-x-2" aria-label="Active affiliate members">
+                <% 4.times do |i| %>
+                  <img src="/api/placeholder/32/32" alt="Affiliate member <%= i + 1 %>" class="w-8 h-8 rounded-full border-2 border-white">
+                <% end %>
+              </div>
+              <span class="text-sm text-slate-600">10,000+ active affiliates</span>
+            </div>
+            
+            <div class="flex items-center space-x-1" role="img" aria-label="4.9 out of 5 star rating">
+              <% 5.times do %>
+                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              <% end %>
+              <span class="text-sm text-slate-600 ml-2">4.9/5 rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Content - Product Showcase -->
+      <div class="lg:col-span-5">
+        <div class="relative">
+          <!-- Glassmorphism Container -->
+          <div class="relative bg-white/20 backdrop-blur-lg border border-white/30 rounded-3xl p-8 shadow-2xl">
+            <!-- Floating Product Cards -->
+            <div class="grid grid-cols-2 gap-4">
+              <% @featured_products.first(4).each_with_index do |product, index| %>
+                <article class="group relative bg-white/40 backdrop-blur-sm rounded-2xl p-4 hover:bg-white/60 transition-all duration-300 hover:scale-105 hover:shadow-lg" itemscope itemtype="https://schema.org/Product">
+                  <img src="<%= product[:image] %>" 
+                       alt="<%= product[:name] %>" 
+                       class="w-full h-24 object-cover rounded-lg mb-3"
+                       itemprop="image"
+                       loading="<%= index < 2 ? 'eager' : 'lazy' %>">
+                  
+                  <!-- Commission Badge -->
+                  <div class="absolute -top-2 -right-2 bg-gradient-to-r from-cyan-500 to-teal-400 text-white text-xs font-bold px-2 py-1 rounded-full">
+                    <%= product[:commission] %>%
+                  </div>
+                  
+                  <h3 class="font-semibold text-sm text-slate-800 line-clamp-2 mb-2" itemprop="name"><%= product[:name] %></h3>
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-indigo-900" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                      <span itemprop="price" content="<%= product[:price] %>">$<%= product[:price] %></span>
+                      <meta itemprop="priceCurrency" content="USD">
+                    </span>
+                    <div class="flex items-center space-x-1" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                      <meta itemprop="ratingValue" content="<%= product[:rating] %>">
+                      <meta itemprop="bestRating" content="5">
+                      <% product[:rating].to_i.times do %>
+                        <svg class="w-3 h-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                      <% end %>
+                    </div>
+                  </div>
+                </article>
+              <% end %>
+            </div>
+            
+            <!-- Floating Stats -->
+            <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white/80 backdrop-blur-sm border border-white/40 rounded-2xl px-6 py-3 shadow-lg">
+              <div class="text-center">
+                <div class="text-2xl font-bold text-indigo-900">$2.8M+</div>
+                <div class="text-sm text-slate-600">Commissions Paid</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories Navigation -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Shop by Category</h2>
+      <p class="text-lg text-slate-600">Discover products across all categories and start earning</p>
+    </div>
+    
+    <!-- Desktop Grid -->
+    <div class="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <% @categories.each do |category| %>
+        <div class="group relative bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-2xl p-6 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer hover:border-orange-300">
+          <div class="text-center">
+            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300"><%= category[:icon] %></div>
+            <h3 class="font-semibold text-slate-900 mb-2"><%= category[:name] %></h3>
+            <p class="text-sm text-slate-600"><%= category[:count] %> products</p>
+          </div>
+          
+          <!-- Hover Gradient Border -->
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500/20 to-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+        </div>
+      <% end %>
+    </div>
+    
+    <!-- Mobile Horizontal Scroll -->
+    <div class="md:hidden">
+      <div class="flex space-x-4 overflow-x-auto pb-4 scrollbar-hide">
+        <% @categories.each do |category| %>
+          <div class="flex-shrink-0 bg-white border border-slate-200 rounded-xl p-4 min-w-[140px] text-center hover:shadow-md transition-shadow">
+            <div class="text-2xl mb-2"><%= category[:icon] %></div>
+            <h3 class="font-medium text-sm text-slate-900 mb-1"><%= category[:name] %></h3>
+            <p class="text-xs text-slate-500"><%= category[:count] %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-16 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between mb-12">
+      <div>
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Featured Products</h2>
+        <p class="text-lg text-slate-600">Trending items with high commission rates</p>
+      </div>
+      <%= link_to "View All", "#", class: "text-orange-500 hover:text-orange-600 font-medium flex items-center space-x-1" %>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% @featured_products.each do |product| %>
+        <div class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-105 border border-slate-100">
+          <!-- Product Image -->
+          <div class="relative aspect-square overflow-hidden">
+            <img src="<%= product[:image] %>" alt="<%= product[:name] %>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+            
+            <!-- Discount Badge -->
+            <% if product[:discount] > 0 %>
+              <div class="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+                <%= product[:discount] %>% OFF
+              </div>
+            <% end %>
+            
+            <!-- Commission Badge -->
+            <div class="absolute top-4 right-4 bg-gradient-to-r from-cyan-500 to-teal-400 text-white text-sm font-bold px-3 py-1 rounded-full">
+              Earn <%= product[:commission] %>%
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-3">
+              <button class="bg-white text-slate-900 p-3 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+              </button>
+              <button class="bg-white text-slate-900 p-3 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Product Info -->
+          <div class="p-6">
+            <h3 class="font-semibold text-lg text-slate-900 mb-2 line-clamp-2"><%= product[:name] %></h3>
+            
+            <!-- Rating -->
+            <div class="flex items-center space-x-1 mb-3">
+              <% product[:rating].to_i.times do %>
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              <% end %>
+              <span class="text-sm text-slate-600">(<%= product[:rating] %>)</span>
+            </div>
+            
+            <!-- Price and Action -->
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-2xl font-bold text-indigo-900">$<%= product[:price] %></span>
+                <% if product[:discount] > 0 %>
+                  <span class="text-sm text-slate-500 line-through ml-2">$<%= (product[:price] / (1 - product[:discount]/100.0)).round(2) %></span>
+                <% end %>
+              </div>
+              
+              <button class="bg-gradient-to-r from-indigo-900 to-orange-500 text-white px-6 py-2 rounded-xl font-medium hover:from-indigo-800 hover:to-orange-400 transition-all duration-200 hover:scale-105">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Promotional Strip -->
+<section class="py-8 bg-gradient-to-r from-indigo-900 via-purple-800 to-orange-600">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between text-white">
+      <div class="text-center md:text-left mb-4 md:mb-0">
+        <h3 class="text-2xl font-bold mb-2">🔥 Limited Time Offer</h3>
+        <p class="text-lg text-white/90">Double commissions on all electronics - Ends in 24 hours!</p>
+      </div>
+      
+      <!-- Countdown Timer -->
+      <div class="flex items-center space-x-4" data-controller="countdown">
+        <div class="text-center">
+          <div class="text-2xl font-bold" data-countdown-target="hours">23</div>
+          <div class="text-sm text-white/80">Hours</div>
+        </div>
+        <div class="text-2xl font-bold">:</div>
+        <div class="text-center">
+          <div class="text-2xl font-bold" data-countdown-target="minutes">45</div>
+          <div class="text-sm text-white/80">Minutes</div>
+        </div>
+        <div class="text-2xl font-bold">:</div>
+        <div class="text-center">
+          <div class="text-2xl font-bold" data-countdown-target="seconds">30</div>
+          <div class="text-sm text-white/80">Seconds</div>
+        </div>
+      </div>
+      
+      <%= link_to "Claim Now", "#", class: "bg-white text-indigo-900 px-8 py-3 rounded-xl font-bold hover:bg-slate-100 transition-colors" %>
+    </div>
+  </div>
+</section>
+
+<!-- Affiliate Highlights -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Join Our Thriving Community</h2>
+      <p class="text-lg text-slate-600">See what our affiliates are earning</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Commissions Paid -->
+      <div class="text-center group">
+        <div class="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-3xl p-8 hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+          <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold text-slate-900 mb-2"><%= @affiliate_stats[:commissions_paid] %></h3>
+          <p class="text-slate-600">Total Commissions Paid</p>
+        </div>
+      </div>
+      
+      <!-- Top Affiliates -->
+      <div class="text-center group">
+        <div class="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-3xl p-8 hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+          <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold text-slate-900 mb-2"><%= @affiliate_stats[:top_affiliates] %>+</h3>
+          <p class="text-slate-600">Active Affiliates</p>
+        </div>
+      </div>
+      
+      <!-- Your Earnings -->
+      <div class="text-center group">
+        <div class="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-3xl p-8 hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+          <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold text-slate-900 mb-2"><%= @affiliate_stats[:your_earnings] %></h3>
+          <p class="text-slate-600">Your Potential Earnings</p>
+          <button class="mt-4 text-orange-500 hover:text-orange-600 font-medium">Start Earning →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

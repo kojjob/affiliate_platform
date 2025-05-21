@@ -1,0 +1,2 @@
+module Affiliates::DashboardsHelper
+end

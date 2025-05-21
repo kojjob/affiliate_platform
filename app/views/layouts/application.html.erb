@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title><%= content_for(:title) || "Affiliate Platform" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<!-- Basic SEO Meta Tags -->
+    <title><%= content_for?(:title) ? content_for(:title) : "AffiliateMarket - Shop & Earn with Top Brands | Best Affiliate Marketing Platform" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? content_for(:description) : "Join thousands earning passive income through affiliate marketing. Shop top products and earn up to 25% commission. Start your affiliate journey today!" %>">
+    <meta name="keywords" content="<%= content_for?(:keywords) ? content_for(:keywords) : "affiliate marketing, earn money online, passive income, commission, online shopping, affiliate program, make money shopping" %>">
+    <meta name="author" content="AffiliateMarket">
+    <meta name="robots" content="<%= content_for?(:robots) ? content_for(:robots) : 'index, follow' %>">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="<%= content_for?(:canonical) ? content_for(:canonical) : request.original_url %>">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="<%= content_for?(:title) ? content_for(:title) : "AffiliateMarket - Shop & Earn with Top Brands" %>">
+    <meta property="og:description" content="<%= content_for?(:description) ? content_for(:description) : "Join thousands earning passive income through affiliate marketing. Shop top products and earn up to 25% commission." %>">
+    <meta property="og:image" content="<%= content_for?(:og_image) ? content_for(:og_image) : "#{request.base_url}/api/placeholder/1200/630" %>">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AffiliateMarket">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@affiliatemarket">
+    <meta name="twitter:creator" content="@affiliatemarket">
+    <meta name="twitter:title" content="<%= content_for?(:title) ? content_for(:title) : "AffiliateMarket - Shop & Earn" %>">
+    <meta name="twitter:description" content="<%= content_for?(:description) ? content_for(:description) : "Join thousands earning passive income through affiliate marketing." %>">
+    <meta name="twitter:image" content="<%= content_for?(:og_image) ? content_for(:og_image) : "#{request.base_url}/api/placeholder/1200/630" %>">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#1A1E3D">
+    
+    <!-- Performance & Resource Hints -->
+    <%= yield(:preload) %>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -17,14 +55,36 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
+    <!-- Language/Region -->
+    <%= yield(:hreflang) %>
+
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+   
+    <!-- Critical Font Loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      <%= structured_data_organization %>
+    </script>
+    
+    <script type="application/ld+json">
+      <%= structured_data_website %>
+    </script>
+    
+    <%= yield(:structured_data) %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-slate-50 font-inter text-slate-900 antialiased">
+    <%= render "shared/navigation" %>
+    <%= render "shared/flash_messages" %>
+    
+    <main>
       <%= yield %>
     </main>
+    
+    <%= render "shared/footer" %>
   </body>
 </html>

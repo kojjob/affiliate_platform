@@ -1,0 +1,467 @@
+<% page_title(@page_title) %>
+<% page_description(@page_description) %>
+<% page_keywords(@page_keywords) %>
+<% page_canonical(marketing_tools_url) %>
+
+<% content_for :structured_data do %>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "AffiliateMarket Marketing Tools",
+      "description": "Professional marketing materials and tools for affiliate promotion",
+      "creator": {
+        "@type": "Organization",
+        "name": "AffiliateMarket"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  </script>
+<% end %>
+
+<!-- Breadcrumb Navigation -->
+<nav aria-label="Breadcrumb" class="bg-slate-50 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+    <ol class="flex items-center space-x-2 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="<%= root_path %>" itemprop="item" class="text-slate-600 hover:text-orange-500 transition-colors">
+          <span itemprop="name">Home</span>
+        </a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li class="text-slate-400">›</li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name" class="text-slate-900 font-medium">Marketing Tools</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-indigo-900 via-purple-800 to-orange-600 text-white py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+      Marketing Tools
+    </h1>
+    <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+      Professional marketing materials to maximize your conversions. 
+      Banners, feeds, templates, and tracking tools - all free for affiliates.
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+      <div class="text-center">
+        <div class="text-3xl font-bold">100+</div>
+        <div class="text-sm text-white/80">Banner Designs</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold">10</div>
+        <div class="text-sm text-white/80">Banner Sizes</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold">Real-time</div>
+        <div class="text-sm text-white/80">Product Feeds</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold">24/7</div>
+        <div class="text-sm text-white/80">Analytics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marketing Tools Categories -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Complete Marketing Arsenal</h2>
+      <p class="text-lg text-slate-600">Everything you need to promote products effectively</p>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <% @marketing_tools_list.each_with_index do |category, index| %>
+        <div class="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2"><%= category[:category] %></h3>
+              <p class="text-slate-600 text-sm">Available formats: <span class="font-medium"><%= category[:formats] %></span></p>
+            </div>
+            <div class="w-12 h-12 bg-gradient-to-r <%= index == 0 ? 'from-blue-500 to-blue-600' : index == 1 ? 'from-green-500 to-green-600' : index == 2 ? 'from-orange-500 to-orange-600' : index == 3 ? 'from-purple-500 to-purple-600' : 'from-pink-500 to-pink-600' %> rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="text-white font-bold">
+                <%= category[:category][0] %>
+              </span>
+            </div>
+          </div>
+          
+          <ul class="space-y-3">
+            <% category[:tools].each do |tool| %>
+              <li class="flex items-start">
+                <span class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-0.5">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </span>
+                <span class="text-slate-700"><%= tool %></span>
+              </li>
+            <% end %>
+          </ul>
+          
+          <div class="mt-6">
+            <button class="w-full bg-white text-slate-900 py-3 px-4 rounded-xl font-medium hover:bg-slate-100 transition-colors border border-slate-200">
+              Access <%= category[:category] %>
+            </button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Banner Sizes Guide -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Banner Sizes & Placements</h2>
+      <p class="text-lg text-slate-600">Choose the right banner size for optimal performance</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @banner_sizes.each_with_index do |banner, index| %>
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+          <!-- Banner Preview -->
+          <div class="bg-slate-100 rounded-lg p-4 mb-4 text-center relative overflow-hidden">
+            <div class="bg-gradient-to-r from-indigo-900 to-orange-500 rounded text-white text-xs font-medium p-2 inline-block">
+              <%= banner[:size] %> Banner
+            </div>
+            <!-- Visual representation -->
+            <div class="mt-2 text-xs text-slate-500">
+              <div class="border-2 border-dashed border-slate-300 rounded inline-block p-2">
+                Preview Area
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="font-semibold text-slate-900 mb-2"><%= banner[:name] %></h3>
+          <p class="text-slate-600 text-sm mb-3">Size: <span class="font-medium"><%= banner[:size] %></span></p>
+          <p class="text-slate-600 text-sm mb-4">Best for: <%= banner[:usage] %></p>
+          
+          <div class="flex space-x-2">
+            <button class="flex-1 bg-indigo-900 text-white py-2 px-3 rounded-lg text-sm font-medium hover:bg-indigo-800 transition-colors">
+              Download
+            </button>
+            <button class="flex-1 border border-slate-300 text-slate-700 py-2 px-3 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors">
+              Preview
+            </button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Link Generation Tool -->
+<section class="py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Quick Link Generator</h2>
+      <p class="text-lg text-slate-600">Generate affiliate links with custom tracking parameters</p>
+    </div>
+    
+    <div class="bg-slate-50 rounded-3xl p-8" data-controller="link-generator">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Input Form -->
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Product URL</label>
+            <input type="url" 
+                   placeholder="https://example.com/product"
+                   class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                   data-link-generator-target="productUrl"
+                   data-action="input->link-generator#generateLink">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Campaign Name (Optional)</label>
+            <input type="text" 
+                   placeholder="summer-sale-2025"
+                   class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                   data-link-generator-target="campaignName"
+                   data-action="input->link-generator#generateLink">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Traffic Source</label>
+            <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    data-link-generator-target="trafficSource"
+                    data-action="change->link-generator#generateLink">
+              <option value="website">Website</option>
+              <option value="social">Social Media</option>
+              <option value="email">Email</option>
+              <option value="youtube">YouTube</option>
+              <option value="blog">Blog</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Generated Link -->
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Your Affiliate Link</label>
+            <div class="relative">
+              <input type="text" 
+                     readonly
+                     value="https://affiliatemarket.com/r/abc123?utm_source=website&utm_campaign=demo"
+                     class="w-full px-4 py-3 pr-12 border border-slate-300 rounded-lg bg-slate-100 text-slate-700"
+                     data-link-generator-target="generatedLink">
+              <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-500 hover:text-slate-700"
+                      data-action="click->link-generator#copyLink">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <div class="space-y-3">
+            <h4 class="font-medium text-slate-900">Tracking Parameters:</h4>
+            <div class="bg-white rounded-lg p-4 border border-slate-200">
+              <div class="grid grid-cols-2 gap-3 text-sm">
+                <div>
+                  <span class="text-slate-500">Source:</span>
+                  <span class="font-medium text-slate-900" data-link-generator-target="displaySource">website</span>
+                </div>
+                <div>
+                  <span class="text-slate-500">Medium:</span>
+                  <span class="font-medium text-slate-900">affiliate</span>
+                </div>
+                <div class="col-span-2">
+                  <span class="text-slate-500">Campaign:</span>
+                  <span class="font-medium text-slate-900" data-link-generator-target="displayCampaign">demo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button class="w-full bg-gradient-to-r from-indigo-900 to-orange-500 text-white py-3 px-4 rounded-lg font-medium hover:from-indigo-800 hover:to-orange-400 transition-all duration-200"
+                  data-action="click->link-generator#copyLink">
+            Copy Link to Clipboard
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Content Templates -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Content Templates</h2>
+      <p class="text-lg text-slate-600">Ready-to-use templates for different platforms</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Email Template -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Email Templates</h3>
+        <p class="text-slate-600 text-sm mb-4">Professional email templates for product recommendations and newsletters.</p>
+        <ul class="text-slate-600 text-sm space-y-1 mb-4">
+          <li>• Product review emails</li>
+          <li>• Newsletter templates</li>
+          <li>• Follow-up sequences</li>
+          <li>• Seasonal promotions</li>
+        </ul>
+        <button class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors">
+          Download Templates
+        </button>
+      </div>
+      
+      <!-- Social Media Templates -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Social Media Posts</h3>
+        <p class="text-slate-600 text-sm mb-4">Engaging social media templates for Instagram, Facebook, Twitter, and TikTok.</p>
+        <ul class="text-slate-600 text-sm space-y-1 mb-4">
+          <li>• Instagram Stories</li>
+          <li>• Facebook posts</li>
+          <li>• Twitter threads</li>
+          <li>• TikTok captions</li>
+        </ul>
+        <button class="w-full bg-pink-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-pink-600 transition-colors">
+          Get Templates
+        </button>
+      </div>
+      
+      <!-- Blog Templates -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Blog Post Templates</h3>
+        <p class="text-slate-600 text-sm mb-4">SEO-optimized blog post templates for product reviews and comparisons.</p>
+        <ul class="text-slate-600 text-sm space-y-1 mb-4">
+          <li>• Product reviews</li>
+          <li>• Comparison guides</li>
+          <li>• Buying guides</li>
+          <li>• Listicles</li>
+        </ul>
+        <button class="w-full bg-green-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors">
+          Access Library
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Analytics Dashboard Preview -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Real-Time Analytics</h2>
+      <p class="text-lg text-slate-600">Track performance with detailed analytics and insights</p>
+    </div>
+    
+    <div class="bg-slate-900 rounded-3xl p-8 text-white">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-orange-400 mb-2">1,247</div>
+          <div class="text-sm text-slate-300">Total Clicks</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-green-400 mb-2">89</div>
+          <div class="text-sm text-slate-300">Conversions</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-cyan-400 mb-2">7.1%</div>
+          <div class="text-sm text-slate-300">Conversion Rate</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-purple-400 mb-2">$1,456</div>
+          <div class="text-sm text-slate-300">Earnings</div>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Traffic Sources -->
+        <div>
+          <h3 class="font-semibold mb-4">Top Traffic Sources</h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span>Social Media</span>
+              <div class="flex items-center">
+                <div class="w-24 h-2 bg-slate-700 rounded-full mr-3">
+                  <div class="w-16 h-2 bg-orange-400 rounded-full"></div>
+                </div>
+                <span class="text-sm">67%</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Email</span>
+              <div class="flex items-center">
+                <div class="w-24 h-2 bg-slate-700 rounded-full mr-3">
+                  <div class="w-8 h-2 bg-green-400 rounded-full"></div>
+                </div>
+                <span class="text-sm">33%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Top Products -->
+        <div>
+          <h3 class="font-semibold mb-4">Best Performing Products</h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-sm">Wireless Headphones</span>
+              <span class="text-green-400 font-medium">$543</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm">Fitness Tracker</span>
+              <span class="text-green-400 font-medium">$389</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm">Office Chair</span>
+              <span class="text-green-400 font-medium">$524</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Best Practices -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Marketing Best Practices</h2>
+      <p class="text-lg text-slate-600">Pro tips to maximize your conversion rates</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+          <span class="text-2xl">🎯</span>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Target Your Audience</h3>
+        <p class="text-slate-600 text-sm">Use appropriate banners and messaging that resonates with your specific audience demographics and interests.</p>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+          <span class="text-2xl">📱</span>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Mobile Optimization</h3>
+        <p class="text-slate-600 text-sm">Ensure your promotional content looks great on mobile devices where most of your traffic will come from.</p>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+          <span class="text-2xl">🔄</span>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">A/B Test Everything</h3>
+        <p class="text-slate-600 text-sm">Test different banners, copy, and placements to find what works best for your audience and traffic sources.</p>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+          <span class="text-2xl">📊</span>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Track Performance</h3>
+        <p class="text-slate-600 text-sm">Use UTM parameters and check your analytics regularly to understand which campaigns are driving the best results.</p>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center mb-4">
+          <span class="text-2xl">💎</span>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Quality Over Quantity</h3>
+        <p class="text-slate-600 text-sm">Focus on promoting products you believe in rather than stuffing your content with affiliate links everywhere.</p>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-4">
+          <span class="text-2xl">📝</span>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-3">Disclosure Compliance</h3>
+        <p class="text-slate-600 text-sm">Always include proper FTC disclosures (#ad, #affiliate) to maintain trust and comply with regulations.</p>
+      </div>
+    </div>
+  </div>
+</section>

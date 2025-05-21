@@ -1,0 +1,364 @@
+<% page_title(@page_title) %>
+<% page_description(@page_description) %>
+<% page_keywords(@page_keywords) %>
+<% page_canonical(commission_rates_url) %>
+
+<% content_for :structured_data do %>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "PriceSpecification",
+      "name": "AffiliateMarket Commission Rates",
+      "description": "Detailed commission structure for affiliate marketing program",
+      "priceCurrency": "Percentage",
+      "price": "8-25",
+      "priceCategory": "Commission",
+      "eligibleQuantity": {
+        "@type": "QuantitativeValue",
+        "minValue": 8,
+        "maxValue": 25,
+        "unitText": "Percent"
+      }
+    }
+  </script>
+<% end %>
+
+<!-- Breadcrumb Navigation -->
+<nav aria-label="Breadcrumb" class="bg-slate-50 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+    <ol class="flex items-center space-x-2 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="<%= root_path %>" itemprop="item" class="text-slate-600 hover:text-orange-500 transition-colors">
+          <span itemprop="name">Home</span>
+        </a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li class="text-slate-400">›</li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name" class="text-slate-900 font-medium">Commission Rates</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-indigo-900 via-purple-800 to-orange-600 text-white py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+      Commission Rates
+    </h1>
+    <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+      Transparent, competitive rates with tier bonuses. 
+      The more you sell, the more you earn.
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+      <div class="text-center">
+        <div class="text-3xl font-bold">25%</div>
+        <div class="text-sm text-white/80">Max Rate</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold">4</div>
+        <div class="text-sm text-white/80">Tier Levels</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold">$5K</div>
+        <div class="text-sm text-white/80">Tier Bonuses</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold">30+</div>
+        <div class="text-sm text-white/80">Categories</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detailed Commission Rates -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Commission Rates by Category</h2>
+      <p class="text-lg text-slate-600">Detailed breakdown of commission rates and tier progression</p>
+    </div>
+    
+    <div class="space-y-12">
+      <% @detailed_commission_rates.each_with_index do |category, index| %>
+        <div class="bg-slate-50 rounded-3xl p-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Category Overview -->
+            <div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-6"><%= category[:category] %></h3>
+              
+              <!-- Tier Rates -->
+              <div class="space-y-3 mb-8">
+                <h4 class="font-semibold text-slate-700 mb-4">Commission Tiers:</h4>
+                <% category[:tier_rates].each do |tier, rate| %>
+                  <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                    <span class="text-slate-700"><%= tier %></span>
+                    <span class="font-bold text-indigo-900"><%= rate %></span>
+                  </div>
+                <% end %>
+              </div>
+              
+              <!-- Base Rate Highlight -->
+              <div class="bg-gradient-to-r from-indigo-900 to-orange-500 text-white rounded-2xl p-6 text-center">
+                <div class="text-3xl font-bold mb-2"><%= category[:base_rate] %></div>
+                <div class="text-white/90">Commission Range</div>
+              </div>
+            </div>
+            
+            <!-- Popular Products -->
+            <div>
+              <h4 class="font-semibold text-slate-900 mb-6">Popular Products & Earnings:</h4>
+              <div class="space-y-4">
+                <% category[:popular_products].each do |product| %>
+                  <div class="bg-white rounded-xl p-4 border border-slate-200">
+                    <div class="flex items-center justify-between mb-2">
+                      <h5 class="font-medium text-slate-900"><%= product[:name] %></h5>
+                      <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                        <%= product[:commission] %>
+                      </span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-slate-600">
+                      <span>Avg. Price: <span class="font-medium"><%= product[:avg_price] %></span></span>
+                      <span>Avg. Commission: <span class="font-bold text-green-600"><%= product[:avg_commission] %></span></span>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Tier Bonuses -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Performance Bonuses</h2>
+      <p class="text-lg text-slate-600">Extra rewards for reaching important milestones</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @tier_bonuses.each_with_index do |bonus, index| %>
+        <div class="bg-white rounded-2xl p-6 shadow-sm text-center relative overflow-hidden group hover:shadow-lg transition-shadow">
+          <!-- Background decoration -->
+          <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-orange-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          
+          <div class="relative">
+            <!-- Milestone badge -->
+            <div class="w-16 h-16 bg-gradient-to-r from-indigo-900 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <span class="text-white font-bold text-sm"><%= index + 1 %></span>
+            </div>
+            
+            <h3 class="font-semibold text-slate-900 mb-2"><%= bonus[:milestone] %></h3>
+            <div class="text-2xl font-bold text-green-600 mb-3"><%= bonus[:bonus] %></div>
+            <p class="text-slate-600 text-sm"><%= bonus[:requirements] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="text-center mt-12">
+      <div class="bg-white rounded-2xl p-6 shadow-sm border-2 border-orange-200 max-w-2xl mx-auto">
+        <h3 class="font-semibold text-slate-900 mb-3">🏆 Elite Affiliate Perks</h3>
+        <p class="text-slate-600 mb-4">Reach Elite status (100+ sales) and unlock exclusive benefits:</p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm">
+          <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full">25% Max Commission</span>
+          <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full">Dedicated Manager</span>
+          <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">Priority Support</span>
+          <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Early Access</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Earning Examples -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Real Earning Examples</h2>
+      <p class="text-lg text-slate-600">See what you could earn at different activity levels</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <% @earning_examples.each_with_index do |example, index| %>
+        <div class="bg-slate-50 rounded-2xl p-8 text-center relative">
+          <!-- Tier indicator -->
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+            <div class="bg-gradient-to-r <%= index == 0 ? 'from-slate-500 to-slate-600' : index == 1 ? 'from-orange-500 to-red-500' : 'from-green-500 to-emerald-600' %> text-white px-4 py-2 rounded-full text-sm font-medium">
+              <%= example[:scenario] %>
+            </div>
+          </div>
+          
+          <div class="mt-6">
+            <!-- Monthly Stats -->
+            <div class="space-y-4 mb-8">
+              <div class="flex justify-between">
+                <span class="text-slate-600">Monthly Sales:</span>
+                <span class="font-medium text-slate-900"><%= example[:monthly_sales] %></span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-600">Avg Order Value:</span>
+                <span class="font-medium text-slate-900"><%= example[:avg_order] %></span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-600">Commission Rate:</span>
+                <span class="font-medium text-slate-900"><%= example[:commission_rate] %></span>
+              </div>
+            </div>
+            
+            <!-- Earnings -->
+            <div class="border-t border-slate-200 pt-6">
+              <div class="mb-4">
+                <div class="text-sm text-slate-600 mb-1">Monthly Earnings</div>
+                <div class="text-3xl font-bold text-indigo-900"><%= example[:monthly_earnings] %></div>
+              </div>
+              <div>
+                <div class="text-sm text-slate-600 mb-1">Yearly Projection</div>
+                <div class="text-xl font-bold text-green-600"><%= example[:yearly_projection] %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="text-center mt-12">
+      <p class="text-slate-600 mb-6">
+        💡 <strong>Pro Tip:</strong> These are conservative estimates. Many affiliates exceed these numbers 
+        with strategic promotion and audience building.
+      </p>
+      <%= link_to "Start Earning Today", affiliate_program_path, class: "bg-gradient-to-r from-indigo-900 to-orange-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-indigo-800 hover:to-orange-400 transition-all duration-200" %>
+    </div>
+  </div>
+</section>
+
+<!-- Commission Calculator -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Commission Calculator</h2>
+      <p class="text-lg text-slate-600">Estimate your potential earnings</p>
+    </div>
+    
+    <div class="bg-white rounded-3xl p-8 shadow-sm" data-controller="commission-calculator">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Calculator Inputs -->
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Monthly Sales</label>
+            <input type="range" 
+                   min="1" 
+                   max="200" 
+                   value="25" 
+                   class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer slider"
+                   data-commission-calculator-target="salesSlider"
+                   data-action="input->commission-calculator#calculate">
+            <div class="flex justify-between text-sm text-slate-500 mt-1">
+              <span>1</span>
+              <span data-commission-calculator-target="salesValue">25</span>
+              <span>200+</span>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Average Order Value ($)</label>
+            <input type="range" 
+                   min="50" 
+                   max="1000" 
+                   value="200" 
+                   step="10"
+                   class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer slider"
+                   data-commission-calculator-target="priceSlider"
+                   data-action="input->commission-calculator#calculate">
+            <div class="flex justify-between text-sm text-slate-500 mt-1">
+              <span>$50</span>
+              <span>$<span data-commission-calculator-target="priceValue">200</span></span>
+              <span>$1000+</span>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Commission Rate (%)</label>
+            <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    data-commission-calculator-target="rateSelect"
+                    data-action="change->commission-calculator#calculate">
+              <option value="8">Starter - 8%</option>
+              <option value="12" selected>Growing - 12%</option>
+              <option value="16">Pro - 16%</option>
+              <option value="20">Elite - 20%</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Results -->
+        <div class="bg-slate-50 rounded-2xl p-6">
+          <h3 class="font-semibold text-slate-900 mb-6">Your Potential Earnings</h3>
+          
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-slate-600">Monthly Revenue:</span>
+              <span class="font-bold text-slate-900">$<span data-commission-calculator-target="monthlyRevenue">5,000</span></span>
+            </div>
+            
+            <div class="flex justify-between items-center">
+              <span class="text-slate-600">Monthly Commission:</span>
+              <span class="font-bold text-indigo-900 text-xl">$<span data-commission-calculator-target="monthlyCommission">600</span></span>
+            </div>
+            
+            <div class="border-t border-slate-200 pt-4">
+              <div class="flex justify-between items-center">
+                <span class="text-slate-600">Yearly Projection:</span>
+                <span class="font-bold text-green-600 text-2xl">$<span data-commission-calculator-target="yearlyCommission">7,200</span></span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-6 p-4 bg-orange-50 border border-orange-200 rounded-lg">
+            <p class="text-sm text-orange-800">
+              <strong>Note:</strong> These are estimates based on your inputs. 
+              Actual earnings may vary based on conversion rates and market conditions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Commission FAQ</h2>
+      <p class="text-lg text-slate-600">Common questions about our commission structure</p>
+    </div>
+    
+    <div class="space-y-6">
+      <div class="bg-slate-50 rounded-2xl p-6">
+        <h3 class="font-semibold text-slate-900 mb-3">How are commission tiers determined?</h3>
+        <p class="text-slate-600">Tiers are based on your total sales volume across all products. Once you reach a new tier, all future commissions are calculated at the higher rate.</p>
+      </div>
+      
+      <div class="bg-slate-50 rounded-2xl p-6">
+        <h3 class="font-semibold text-slate-900 mb-3">Do tier bonuses stack with regular commissions?</h3>
+        <p class="text-slate-600">Yes! Tier bonuses are one-time payments in addition to your regular commissions. You'll receive both the milestone bonus and ongoing higher commission rates.</p>
+      </div>
+      
+      <div class="bg-slate-50 rounded-2xl p-6">
+        <h3 class="font-semibold text-slate-900 mb-3">When do commission rates reset?</h3>
+        <p class="text-slate-600">Commission tiers are lifetime achievements - they never reset. Once you reach a tier, you maintain that commission rate permanently.</p>
+      </div>
+      
+      <div class="bg-slate-50 rounded-2xl p-6">
+        <h3 class="font-semibold text-slate-900 mb-3">Are there any products with special rates?</h3>
+        <p class="text-slate-600">Yes, seasonal promotions and featured products may offer temporary commission boosts. These are clearly marked in your dashboard and email updates.</p>
+      </div>
+    </div>
+  </div>
+</section>

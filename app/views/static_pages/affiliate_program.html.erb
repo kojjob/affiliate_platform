@@ -1,0 +1,366 @@
+<% page_title(@page_title) %>
+<% page_description(@page_description) %>
+<% page_keywords(@page_keywords) %>
+<% page_canonical(affiliate_program_url) %>
+
+<% content_for :structured_data do %>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "AffiliateMarket Affiliate Program",
+      "description": "Join our affiliate program and earn up to 25% commission promoting top brands",
+      "mainEntity": {
+        "@type": "ProfessionalService",
+        "name": "AffiliateMarket Affiliate Program",
+        "description": "Earn money by promoting products from top brands",
+        "provider": {
+          "@type": "Organization",
+          "name": "AffiliateMarket"
+        },
+        "serviceType": "Affiliate Marketing",
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Affiliate Commission Rates",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Electronics Affiliate Program"
+              },
+              "price": "8-15%",
+              "priceCurrency": "Percentage"
+            },
+            {
+              "@type": "Offer", 
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Fashion Affiliate Program"
+              },
+              "price": "12-20%",
+              "priceCurrency": "Percentage"
+            }
+          ]
+        }
+      }
+    }
+  </script>
+<% end %>
+
+<!-- Breadcrumb Navigation -->
+<nav aria-label="Breadcrumb" class="bg-slate-50 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+    <ol class="flex items-center space-x-2 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="<%= root_path %>" itemprop="item" class="text-slate-600 hover:text-orange-500 transition-colors">
+          <span itemprop="name">Home</span>
+        </a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li class="text-slate-400">›</li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name" class="text-slate-900 font-medium">Affiliate Program</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-indigo-900 via-purple-800 to-orange-600 text-white py-20 relative overflow-hidden">
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+  
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full mb-6">
+        <span class="text-white font-medium">🚀 Join 10,000+ successful affiliates</span>
+      </div>
+      
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">
+        Start Earning Today
+      </h1>
+      <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+        Join our affiliate program and earn up to 25% commission promoting products from the world's top brands.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <%= link_to "Join Free Today", "#signup", class: "bg-white text-indigo-900 px-8 py-4 rounded-xl font-bold hover:bg-slate-100 transition-colors" %>
+        <%= link_to "View Commission Rates", "#rates", class: "border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-indigo-900 transition-colors" %>
+      </div>
+      
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-white mb-2">25%</div>
+          <div class="text-sm text-white/80">Max Commission</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-white mb-2">$2.8M+</div>
+          <div class="text-sm text-white/80">Paid Out</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-white mb-2">500+</div>
+          <div class="text-sm text-white/80">Top Brands</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-white mb-2">Weekly</div>
+          <div class="text-sm text-white/80">Payouts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-20 bg-white" id="benefits">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Why Choose Our Affiliate Program?</h2>
+      <p class="text-lg text-slate-600">Everything you need to maximize your earning potential</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% @program_benefits.each do |benefit| %>
+        <div class="text-center p-6 bg-slate-50 rounded-2xl hover:shadow-lg transition-all duration-300 group hover:scale-105">
+          <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+            <%= benefit[:icon] %>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-900 mb-3"><%= benefit[:title] %></h3>
+          <p class="text-slate-600"><%= benefit[:description] %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Commission Rates -->
+<section class="py-20 bg-slate-50" id="rates">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Commission Rates by Category</h2>
+      <p class="text-lg text-slate-600">Competitive rates across all product categories</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @commission_rates.each do |rate| %>
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow border border-slate-200">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-slate-900"><%= rate[:category] %></h3>
+            <span class="bg-gradient-to-r from-indigo-900 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+              <%= rate[:rate] %>
+            </span>
+          </div>
+          <p class="text-slate-600 text-sm">Example: <span class="font-medium text-green-600"><%= rate[:example] %></span></p>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="text-center mt-12">
+      <div class="inline-flex items-center px-6 py-3 bg-orange-100 border border-orange-200 rounded-full">
+        <span class="text-orange-800 font-medium">💡 Higher volume = Higher commission rates</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How to Get Started -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Get Started in 3 Simple Steps</h2>
+      <p class="text-lg text-slate-600">From signup to your first commission in minutes</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div class="text-center group">
+        <div class="relative mb-8">
+          <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+            <span class="text-2xl font-bold text-white">1</span>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold text-slate-900 mb-3">Create Your Account</h3>
+        <p class="text-slate-600">Sign up for free in under 2 minutes. No approval process or waiting period required.</p>
+      </div>
+      
+      <div class="text-center group">
+        <div class="relative mb-8">
+          <div class="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+            <span class="text-2xl font-bold text-white">2</span>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold text-slate-900 mb-3">Choose Your Products</h3>
+        <p class="text-slate-600">Browse our catalog and select products that match your audience and interests.</p>
+      </div>
+      
+      <div class="text-center group">
+        <div class="relative mb-8">
+          <div class="w-20 h-20 bg-gradient-to-r from-cyan-500 to-teal-600 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+            <span class="text-2xl font-bold text-white">3</span>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold text-slate-900 mb-3">Start Promoting</h3>
+        <p class="text-slate-600">Get your unique links and start earning commissions with every sale you generate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Payout Methods -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Flexible Payout Options</h2>
+      <p class="text-lg text-slate-600">Choose the payment method that works best for you</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <% @payout_methods.each do |method| %>
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow text-center border border-slate-200">
+          <h3 class="text-lg font-semibold text-slate-900 mb-4"><%= method[:method] %></h3>
+          <div class="space-y-2 text-sm text-slate-600">
+            <div>Minimum: <span class="font-medium text-slate-900"><%= method[:minimum] %></span></div>
+            <div>Processing: <span class="font-medium text-slate-900"><%= method[:processing] %></span></div>
+            <div>Fee: <span class="font-medium text-green-600"><%= method[:fee] %></span></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Success Stories -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Success Stories</h2>
+      <p class="text-lg text-slate-600">See what our top affiliates are earning</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-slate-50 rounded-2xl p-8 text-center">
+        <img src="/api/placeholder/80/80" alt="Sarah M." class="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-white shadow-sm">
+        <h3 class="font-semibold text-slate-900 mb-2">Sarah M.</h3>
+        <p class="text-sm text-slate-600 mb-4">Fashion Blogger</p>
+        <blockquote class="text-slate-700 italic mb-4">
+          "I've earned over $15,000 in my first 6 months. The high commission rates and excellent support make this the best affiliate program I've joined."
+        </blockquote>
+        <div class="text-2xl font-bold text-green-600">$15,000+</div>
+        <div class="text-sm text-slate-500">in 6 months</div>
+      </div>
+      
+      <div class="bg-slate-50 rounded-2xl p-8 text-center">
+        <img src="/api/placeholder/80/80" alt="Mike T." class="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-white shadow-sm">
+        <h3 class="font-semibold text-slate-900 mb-2">Mike T.</h3>
+        <p class="text-sm text-slate-600 mb-4">Tech YouTuber</p>
+        <blockquote class="text-slate-700 italic mb-4">
+          "The real-time analytics and marketing tools have helped me optimize my content and double my conversion rates."
+        </blockquote>
+        <div class="text-2xl font-bold text-green-600">$8,500</div>
+        <div class="text-sm text-slate-500">per month</div>
+      </div>
+      
+      <div class="bg-slate-50 rounded-2xl p-8 text-center">
+        <img src="/api/placeholder/80/80" alt="Lisa R." class="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-white shadow-sm">
+        <h3 class="font-semibold text-slate-900 mb-2">Lisa R.</h3>
+        <p class="text-sm text-slate-600 mb-4">Lifestyle Influencer</p>
+        <blockquote class="text-slate-700 italic mb-4">
+          "Weekly payouts and excellent customer support. I can focus on creating content while they handle everything else."
+        </blockquote>
+        <div class="text-2xl font-bold text-green-600">$12,000+</div>
+        <div class="text-sm text-slate-500">in 4 months</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Program Requirements</h2>
+      <p class="text-lg text-slate-600">Simple requirements to maintain a quality affiliate network</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center">
+          <span class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+          </span>
+          What We Look For
+        </h3>
+        <ul class="space-y-3 text-slate-600">
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">✓</span>
+            Quality content and engaged audience
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">✓</span>
+            Compliance with FTC disclosure guidelines
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">✓</span>
+            Professional communication and reliability
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">✓</span>
+            Valid website, blog, or social media presence
+          </li>
+        </ul>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center">
+          <span class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+          </span>
+          What We Don't Allow
+        </h3>
+        <ul class="space-y-3 text-slate-600">
+          <li class="flex items-start">
+            <span class="text-red-500 mr-2">✗</span>
+            Spam or unsolicited email marketing
+          </li>
+          <li class="flex items-start">
+            <span class="text-red-500 mr-2">✗</span>
+            Misleading or false advertising
+          </li>
+          <li class="flex items-start">
+            <span class="text-red-500 mr-2">✗</span>
+            Trademark or copyright infringement
+          </li>
+          <li class="flex items-start">
+            <span class="text-red-500 mr-2">✗</span>
+            Adult content or inappropriate material
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-gradient-to-r from-indigo-900 to-orange-500" id="signup">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold text-white mb-4">Ready to Start Earning?</h2>
+    <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+      Join thousands of successful affiliates earning with AffiliateMarket. 
+      Sign up today and start earning commissions within minutes.
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+      <%= link_to "Join Free Today", root_path, class: "bg-white text-indigo-900 px-8 py-4 rounded-xl font-bold hover:bg-slate-100 transition-colors" %>
+      <%= link_to "Contact Sales", contact_path, class: "border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-indigo-900 transition-colors" %>
+    </div>
+    
+    <div class="text-white/80 text-sm">
+      ✓ No setup fees  ✓ No monthly charges  ✓ Cancel anytime
+    </div>
+  </div>
+</section>

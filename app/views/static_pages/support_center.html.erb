@@ -1,0 +1,346 @@
+<% page_title(@page_title) %>
+<% page_description(@page_description) %>
+<% page_keywords(@page_keywords) %>
+<% page_canonical(support_center_url) %>
+
+<% content_for :structured_data do %>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I generate my first affiliate link?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To generate your first affiliate link, log into your dashboard, browse our product catalog, select a product you want to promote, and click 'Get Link' to generate your unique tracking URL."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When do I get paid my commissions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Commissions are paid weekly every Friday for amounts above the minimum threshold. Processing times vary by payment method from 1-5 business days."
+          }
+        }
+      ]
+    }
+  </script>
+<% end %>
+
+<!-- Breadcrumb Navigation -->
+<nav aria-label="Breadcrumb" class="bg-slate-50 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+    <ol class="flex items-center space-x-2 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="<%= root_path %>" itemprop="item" class="text-slate-600 hover:text-orange-500 transition-colors">
+          <span itemprop="name">Home</span>
+        </a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li class="text-slate-400">›</li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name" class="text-slate-900 font-medium">Support Center</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-indigo-900 via-purple-800 to-orange-600 text-white py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+      Support Center
+    </h1>
+    <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+      Find answers, tutorials, and get help from our expert support team. 
+      We're here to help you succeed.
+    </p>
+    
+    <!-- Search Bar -->
+    <div class="max-w-2xl mx-auto relative">
+      <input type="text" 
+             placeholder="Search for help articles, tutorials, or FAQs..."
+             class="w-full px-6 py-4 pl-12 rounded-xl text-slate-900 placeholder-slate-500 focus:ring-4 focus:ring-white/20 focus:outline-none">
+      <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
+        <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Access -->
+<section class="py-12 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <a href="#getting-started" class="flex items-center p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors group">
+        <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+        </div>
+        <span class="font-medium text-slate-900">Quick Start</span>
+      </a>
+      
+      <a href="<%= contact_path %>" class="flex items-center p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors group">
+        <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+          </svg>
+        </div>
+        <span class="font-medium text-slate-900">Live Chat</span>
+      </a>
+      
+      <a href="#video-tutorials" class="flex items-center p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors group">
+        <div class="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1a3 3 0 000-6h-1m0 6h1a3 3 0 000 6H9m-4-6h4m4 0h4"></path>
+          </svg>
+        </div>
+        <span class="font-medium text-slate-900">Tutorials</span>
+      </a>
+      
+      <a href="<%= contact_path %>" class="flex items-center p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors group">
+        <div class="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+        <span class="font-medium text-slate-900">Email Support</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Support Categories -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Browse by Category</h2>
+      <p class="text-lg text-slate-600">Find help organized by topic</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% @support_categories.each do |category| %>
+        <div class="bg-slate-50 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group hover:scale-105">
+          <div class="flex items-start justify-between mb-4">
+            <div class="text-3xl"><%= category[:icon] %></div>
+            <span class="text-sm text-slate-500 bg-white px-2 py-1 rounded-full">
+              <%= category[:articles] %> articles
+            </span>
+          </div>
+          
+          <h3 class="font-semibold text-slate-900 mb-3 group-hover:text-indigo-900 transition-colors">
+            <%= category[:category] %>
+          </h3>
+          
+          <div class="space-y-1 mb-4">
+            <% category[:topics].each do |topic| %>
+              <div class="text-slate-600 text-sm">• <%= topic %></div>
+            <% end %>
+          </div>
+          
+          <div class="flex items-center text-indigo-600 group-hover:text-indigo-700 transition-colors">
+            <span class="text-sm font-medium">Browse articles</span>
+            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Popular Articles -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Popular Articles</h2>
+      <p class="text-lg text-slate-600">Most viewed help articles this month</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <% @popular_articles.each_with_index do |article, index| %>
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow cursor-pointer">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-semibold text-slate-900 flex-1 pr-4 hover:text-indigo-900 transition-colors">
+              <%= article[:title] %>
+            </h3>
+            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full flex-shrink-0">
+              #<%= index + 1 %>
+            </span>
+          </div>
+          
+          <div class="flex items-center justify-between text-sm text-slate-500">
+            <div class="flex items-center space-x-4">
+              <span class="flex items-center">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+                <%= article[:views] %> views
+              </span>
+              <span class="text-slate-400">•</span>
+              <span><%= article[:category] %></span>
+            </div>
+            <span>Updated <%= article[:last_updated] %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Video Tutorials -->
+<section class="py-20 bg-white" id="video-tutorials">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Video Tutorials</h2>
+      <p class="text-lg text-slate-600">Learn with step-by-step video guides</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-slate-50 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+        <div class="aspect-video bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative group">
+          <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <div class="absolute bottom-2 right-2 bg-black/75 text-white text-xs px-2 py-1 rounded">
+            5:32
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-semibold text-slate-900 mb-2">Getting Started: Your First 24 Hours</h3>
+          <p class="text-slate-600 text-sm mb-3">Complete walkthrough from signup to your first affiliate link generation.</p>
+          <div class="flex items-center text-sm text-slate-500">
+            <span>Beginner</span>
+            <span class="mx-2">•</span>
+            <span>12.4K views</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-slate-50 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+        <div class="aspect-video bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative group">
+          <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <div class="absolute bottom-2 right-2 bg-black/75 text-white text-xs px-2 py-1 rounded">
+            8:15
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-semibold text-slate-900 mb-2">Advanced Analytics Deep Dive</h3>
+          <p class="text-slate-600 text-sm mb-3">Learn to read your analytics dashboard and optimize your campaigns.</p>
+          <div class="flex items-center text-sm text-slate-500">
+            <span>Intermediate</span>
+            <span class="mx-2">•</span>
+            <span>8.7K views</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-slate-50 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+        <div class="aspect-video bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative group">
+          <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <div class="absolute bottom-2 right-2 bg-black/75 text-white text-xs px-2 py-1 rounded">
+            12:43
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-semibold text-slate-900 mb-2">Social Media Marketing Strategies</h3>
+          <p class="text-slate-600 text-sm mb-3">Proven techniques for promoting affiliate links on social platforms.</p>
+          <div class="flex items-center text-sm text-slate-500">
+            <span>Advanced</span>
+            <span class="mx-2">•</span>
+            <span>15.2K views</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Support -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold text-slate-900 mb-4">Still Need Help?</h2>
+    <p class="text-lg text-slate-600 mb-8">
+      Can't find what you're looking for? Our support team is here to help you succeed.
+    </p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-6 text-center">
+        <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-2">Live Chat</h3>
+        <p class="text-slate-600 text-sm mb-4">Get instant help from our support team</p>
+        <div class="text-green-600 text-sm font-medium mb-3">• Online now</div>
+        <button class="w-full bg-green-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-green-600 transition-colors">
+          Start Chat
+        </button>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 text-center">
+        <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-2">Email Support</h3>
+        <p class="text-slate-600 text-sm mb-4">Detailed help via email support</p>
+        <div class="text-blue-600 text-sm font-medium mb-3">• Response within 24 hours</div>
+        <%= link_to "Send Email", contact_path, class: "block w-full bg-blue-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-600 transition-colors text-center" %>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 text-center">
+        <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-900 mb-2">Knowledge Base</h3>
+        <p class="text-slate-600 text-sm mb-4">Browse our comprehensive help articles</p>
+        <div class="text-purple-600 text-sm font-medium mb-3">• 200+ articles</div>
+        <button class="w-full bg-purple-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-purple-600 transition-colors">
+          Browse Articles
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Status Page -->
+<section class="py-12 bg-white border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between">
+      <div class="flex items-center mb-4 md:mb-0">
+        <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+        <span class="text-slate-700">All systems operational</span>
+      </div>
+      
+      <div class="flex items-center space-x-6 text-sm text-slate-500">
+        <a href="#" class="hover:text-slate-700 transition-colors">System Status</a>
+        <a href="#" class="hover:text-slate-700 transition-colors">API Documentation</a>
+        <a href="#" class="hover:text-slate-700 transition-colors">Service Level Agreement</a>
+      </div>
+    </div>
+  </div>
+</section>
