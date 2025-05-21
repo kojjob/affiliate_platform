@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :avatar
+
   enum :role, { trader: 0, affiliate: 1, admin: 2 }
 
   # Validations

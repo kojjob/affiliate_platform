@@ -1,131 +1,460 @@
-<!-- Navigation -->
-<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/60"
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/60 shadow-sm"
      data-controller="navigation">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <div class="flex items-center">
-        <%= link_to root_path, class: "flex items-center space-x-2" do %>
-          <div class="w-8 h-8 bg-gradient-to-br from-indigo-900 to-orange-500 rounded-lg flex items-center justify-center">
+        <%= link_to root_path, class: "flex items-center space-x-2 group" do %>
+          <div class="w-8 h-8 bg-gradient-to-br from-indigo-900 to-orange-500 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
             <span class="text-white font-bold text-sm">AM</span>
           </div>
-          <span class="font-bold text-xl text-slate-900">AffiliateMarket</span>
+          <span class="font-bold text-xl text-slate-900 group-hover:text-indigo-900 transition-colors">AffiliateMarket</span>
         <% end %>
       </div>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:block">
-        <div class="ml-10 flex items-baseline space-x-8">
-          <%= link_to "Products", "#", class: "text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors" %>
-          <%= link_to "Categories", "#", class: "text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors" %>
-          <%= link_to "How It Works", how_it_works_path, class: "text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors" %>
-          <%= link_to "Affiliate Program", affiliate_program_path, class: "text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors" %>
+      <!-- Desktop Navigation with Mega Menu -->
+      <div class="hidden lg:block">
+        <div class="ml-10 flex items-baseline space-x-1">
+          <!-- Products Dropdown -->
+          <div class="relative" data-controller="dropdown" data-dropdown-auto-close-value="true">
+            <button data-action="click->dropdown#toggle mouseenter->dropdown#show mouseleave->dropdown#hide"
+                    class="flex items-center space-x-1 text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors rounded-md hover:bg-slate-50"
+                    data-dropdown-target="trigger">
+              <span>Products</span>
+              <svg class="h-4 w-4 transition-transform duration-200" data-dropdown-target="icon" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div data-dropdown-target="menu" 
+                 data-action="mouseenter->dropdown#show mouseleave->dropdown#hide"
+                 class="absolute left-0 mt-2 w-72 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden transform transition-all duration-200 opacity-0 scale-95"
+                 role="menu">
+              <div class="p-4">
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Categories</h3>
+                    <div class="space-y-1">
+                      <%= link_to "#", class: "flex items-center px-2 py-1 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md", role: "menuitem" do %>
+                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                        Electronics
+                      <% end %>
+                      <%= link_to "#", class: "flex items-center px-2 py-1 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md", role: "menuitem" do %>
+                        <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Fashion
+                      <% end %>
+                      <%= link_to "#", class: "flex items-center px-2 py-1 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md", role: "menuitem" do %>
+                        <span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                        Home & Garden
+                      <% end %>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Featured</h3>
+                    <div class="space-y-1">
+                      <%= link_to "#", class: "flex items-center px-2 py-1 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md", role: "menuitem" do %>
+                        <span class="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
+                        Best Sellers
+                      <% end %>
+                      <%= link_to "#", class: "flex items-center px-2 py-1 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md", role: "menuitem" do %>
+                        <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                        New Arrivals
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Categories Dropdown -->
+          <div class="relative" data-controller="dropdown" data-dropdown-auto-close-value="true">
+            <button data-action="click->dropdown#toggle"
+                    class="flex items-center space-x-1 text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors rounded-md hover:bg-slate-50"
+                    data-dropdown-target="trigger">
+              <span>Categories</span>
+              <svg class="h-4 w-4 transition-transform duration-200" data-dropdown-target="icon" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div data-dropdown-target="menu" 
+                 class="absolute left-0 mt-2 w-64 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden transform transition-all duration-200 opacity-0 scale-95"
+                 role="menu">
+              <div class="p-2">
+                <div class="grid grid-cols-1 gap-1">
+                  <%= link_to "#", class: "flex items-center px-3 py-2 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors", role: "menuitem" do %>
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                      <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="font-medium">Electronics</div>
+                      <div class="text-xs text-slate-500">1,234 products</div>
+                    </div>
+                  <% end %>
+                  <%= link_to "#", class: "flex items-center px-3 py-2 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors", role: "menuitem" do %>
+                    <div class="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center mr-3">
+                      <svg class="w-4 h-4 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="font-medium">Fashion</div>
+                      <div class="text-xs text-slate-500">856 products</div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <%= link_to "How It Works", how_it_works_path, class: "text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors rounded-md hover:bg-slate-50" %>
+          <%= link_to "Affiliate Program", affiliate_program_path, class: "text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors rounded-md hover:bg-slate-50" %>
         </div>
       </div>
 
       <!-- Search Bar -->
-      <div class="hidden md:block flex-1 max-w-md mx-8">
-        <div class="relative">
+      <div class="hidden md:block flex-1 max-w-lg mx-8">
+        <div class="relative" data-controller="search">
           <input type="text"
                  placeholder="Search products..."
-                 class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white/50 backdrop-blur-sm">
+                 data-search-target="input"
+                 data-action="input->search#query focus->search#showSuggestions blur->search#hideSuggestions"
+                 class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white/50 backdrop-blur-sm transition-all duration-200">
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
           </div>
+          <!-- Search Suggestions -->
+          <div data-search-target="suggestions" class="absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-lg border border-slate-200 hidden z-50">
+            <div class="p-2">
+              <div class="text-xs text-slate-500 px-2 py-1">Popular searches</div>
+              <div class="space-y-1">
+                <div class="px-2 py-1 text-sm text-slate-700 hover:bg-slate-50 rounded cursor-pointer">iPhone 15</div>
+                <div class="px-2 py-1 text-sm text-slate-700 hover:bg-slate-50 rounded cursor-pointer">Nike Shoes</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Right Side Actions -->
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-3">
+        <!-- Notifications (for authenticated users) -->
+        <% if user_signed_in? %>
+          <div class="relative" data-controller="dropdown">
+            <button data-action="click->dropdown#toggle"
+                    class="relative p-2 text-slate-700 hover:text-indigo-900 transition-colors rounded-lg hover:bg-slate-50"
+                    data-dropdown-target="trigger">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-3.5-3.5L15 17zm-2-4V7a5 5 0 00-10 0v6l-2 2h14l-2-2z"></path>
+              </svg>
+              <span class="absolute -top-1 -right-1 h-4 w-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+            </button>
+            <div data-dropdown-target="menu" 
+                 class="absolute right-0 mt-2 w-80 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden transform transition-all duration-200 opacity-0 scale-95"
+                 role="menu">
+              <div class="p-4">
+                <h3 class="text-sm font-semibold text-slate-900 mb-3">Notifications</h3>
+                <div class="space-y-3">
+                  <div class="flex items-start space-x-3 p-2 hover:bg-slate-50 rounded-lg">
+                    <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm text-slate-900">Commission earned: $25.00</p>
+                      <p class="text-xs text-slate-500">2 hours ago</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start space-x-3 p-2 hover:bg-slate-50 rounded-lg">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm text-slate-900">New product available</p>
+                      <p class="text-xs text-slate-500">1 day ago</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-200">
+                  <%= link_to "#", class: "text-sm text-indigo-600 hover:text-indigo-900" do %>
+                    View all notifications
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
         <!-- Cart -->
-        <button class="relative p-2 text-slate-700 hover:text-indigo-900 transition-colors">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button class="relative p-2 text-slate-700 hover:text-indigo-900 transition-colors rounded-lg hover:bg-slate-50"
+                data-controller="cart-toggle">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 5.5H20"></path>
           </svg>
-          <span class="absolute -top-1 -right-1 h-4 w-4 bg-orange-500 text-white text-xs rounded-full flex items-center justify-center">0</span>
+          <span class="absolute -top-1 -right-1 h-4 w-4 bg-orange-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse">2</span>
         </button>
 
-        <!-- Profile/Auth -->
+        <!-- User Profile/Auth -->
         <% if user_signed_in? %>
           <!-- Desktop User Dropdown -->
           <div class="relative hidden md:inline-block" data-controller="dropdown">
-            <button data-action="click->dropdown#toggle" class="align-middle rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 flex items-center space-x-2">
-              <%# Placeholder for user image or name %>
-              <span class="text-slate-700 hover:text-indigo-900 text-sm font-medium transition-colors">
-                <%= current_user.first_name || current_user.email %>
-              </span>
-              <svg class="h-4 w-4 fill-current text-slate-700" viewBox="0 0 20 20">
+            <button data-action="click->dropdown#toggle" 
+                    class="flex items-center space-x-2 text-left p-1 rounded-full hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    data-dropdown-target="trigger">
+              <!-- User Avatar -->
+              <% if current_user.avatar.present? %>
+                <%= image_tag current_user.avatar, class: "w-8 h-8 rounded-full object-cover ring-2 ring-white shadow-sm" %>
+              <% else %>
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center ring-2 ring-white shadow-sm">
+                  <span class="text-white text-sm font-medium">
+                    <%= (current_user.first_name&.first || current_user.email.first).upcase %>
+                  </span>
+                </div>
+              <% end %>
+              
+              <!-- User Info & Role Badge -->
+              <div class="hidden lg:block text-left">
+                <div class="flex items-center space-x-2">
+                  <span class="text-sm font-medium text-slate-900">
+                    <%= current_user.first_name || current_user.email.split('@').first %>
+                  </span>
+                  <% case current_user.role %>
+                  <% when 'admin' %>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                      <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.5 4a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd" />
+                      </svg>
+                      Admin
+                    </span>
+                  <% when 'trader' %>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
+                        <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                      </svg>
+                      Trader
+                    </span>
+                  <% when 'affiliate' %>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+                      </svg>
+                      Affiliate
+                    </span>
+                  <% end %>
+                </div>
+                <div class="text-xs text-slate-500">
+                  <%= current_user.email %>
+                </div>
+              </div>
+              
+              <svg class="h-4 w-4 transition-transform duration-200 text-slate-400" data-dropdown-target="icon" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
             </button>
-            <div data-dropdown-target="menu" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-              <div class="py-1" role="none">
-                <%= link_to edit_user_registration_path, class: "flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-indigo-900 transition-colors", role: "menuitem" do %>
-                  <svg class="mr-2 h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                  </svg>
-                  Profile
-                <% end %>
-                <%= link_to "#", class: "flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-indigo-900 transition-colors", role: "menuitem" do %>
-                  <svg class="mr-2 h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2.1v1.952h-1.952a1 1 0 01-1.046-.952V2.1a1 1 0 011.046-1.046h1.952zM1.046 8.7A1 1 0 012.1 8h1.952v1.952a1 1 0 01.952 1.046H2.1a1 1 0 01-1.046-.952V8zM8 18.954a1 1 0 01-1.046 1.046H5.002v-1.952a1 1 0 01-.952-1.046h1.952a1 1 0 011.046.952v1.952zM18.954 12a1 1 0 011.046-.952v-1.952h-1.952a1 1 0 01-.952-1.046v1.952a1 1 0 01.952 1.046h1.952zM12 18.954a1 1 0 01-.952 1.046v1.952h1.952a1 1 0 011.046-.952v-1.952a1 1 0 01-.094-.952h-1.904zM1.046 12A1 1 0 012.1 12h1.952a1 1 0 01.952.094v1.904a1 1 0 01-1.046.952H2.1a1 1 0 01-1.046-.952v-1.904zM8 1.046A1 1 0 017.048 2.1H5.096a1 1 0 01-.952 1.046h1.952a1 1 0 011.046-.952V2.1zM18.954 8a1 1 0 011.046.952H21v1.904a1 1 0 01-.952 1.046h-1.952a1 1 0 01-1.046-.952V8z" clip-rule="evenodd" />
-                  </svg>
-                  Settings
-                <% end %>
-                <%= button_to destroy_user_session_path, method: :delete, class: "flex w-full items-center px-4 py-2 text-sm text-left text-slate-700 hover:bg-slate-100 hover:text-indigo-900 transition-colors", role: "menuitem", form: { data: { turbo: false } } do %>
-                  <svg class="mr-2 h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm7.95 6.45a1 1 0 10-1.41-1.41L5.3 12.79a1 1 0 101.42 1.42L10 7.86zM18 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1z" clip-rule="evenodd" />
-                  </svg>
-                  Sign Out
-                <% end %>
+            
+            <div data-dropdown-target="menu" 
+                 class="absolute right-0 mt-2 w-64 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden transform transition-all duration-200 opacity-0 scale-95"
+                 role="menu">
+              <div class="p-2">
+                <!-- User Info Header -->
+                <div class="px-3 py-2 border-b border-slate-100 mb-2">
+                  <div class="flex items-center space-x-3">
+                    <% if current_user.avatar.present? %>
+                      <%= image_tag current_user.avatar, class: "w-10 h-10 rounded-full object-cover" %>
+                    <% else %>
+                      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                        <span class="text-white font-medium">
+                          <%= (current_user.first_name&.first || current_user.email.first).upcase %>
+                        </span>
+                      </div>
+                    <% end %>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-slate-900 truncate">
+                        <%= current_user.first_name || current_user.email.split('@').first %>
+                      </p>
+                      <p class="text-xs text-slate-500 truncate">
+                        <%= current_user.email %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Role-Based Navigation -->
+                <div class="space-y-1">
+                  <% case current_user.role %>
+                  <% when 'admin' %>
+                    <%= link_to admin_dashboard_path, class: "flex items-center px-3 py-2 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors", role: "menuitem" do %>
+                      <svg class="mr-3 h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                        <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                      </svg>
+                      Admin Dashboard
+                    <% end %>
+                    <%= link_to "#", class: "flex items-center px-3 py-2 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors", role: "menuitem" do %>
+                      <svg class="mr-3 h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+                      </svg>
+                      Manage Users
+                    <% end %>
+                  <% when 'trader' %>
+                    <%= link_to traders_dashboard_path, class: "flex items-center px-3 py-2 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors", role: "menuitem" do %>
+                      <svg class="mr-3 h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                      </svg>
+                      Trader Dashboard
+                    <% end %>
+                    <%= link_to "#", class: "flex items-center px-3 py-2 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors", role: "menuitem" do %>
+                      <svg class="mr-3 h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                      </svg>
+                      My Products
+                    <% end %>
+                  <% when 'affiliate' %>
+                    <%= link_to "#", class: "flex items-center px-3 py-2 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors", role: "menuitem" do %>
+                      <svg class="mr-3 h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                      </svg>
+                      Affiliate Dashboard
+                    <% end %>
+                    <%= link_to "#", class: "flex items-center px-3 py-2 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors", role: "menuitem" do %>
+                      <svg class="mr-3 h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                      </svg>
+                      My Links
+                    <% end %>
+                    <%= link_to "#", class: "flex items-center px-3 py-2 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors", role: "menuitem" do %>
+                      <svg class="mr-3 h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"></path>
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"></path>
+                      </svg>
+                      Earnings
+                    <% end %>
+                  <% end %>
+
+                  <!-- Common Menu Items -->
+                  <div class="border-t border-slate-100 my-2"></div>
+                  
+                  <%= link_to edit_user_registration_path, class: "flex items-center px-3 py-2 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors", role: "menuitem" do %>
+                    <svg class="mr-3 h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                    </svg>
+                    Profile Settings
+                  <% end %>
+                  
+                  <%= link_to "#", class: "flex items-center px-3 py-2 text-sm text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors", role: "menuitem" do %>
+                    <svg class="mr-3 h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                    </svg>
+                    Settings
+                  <% end %>
+
+                  <div class="border-t border-slate-100 my-2"></div>
+                  
+                  <%= button_to destroy_user_session_path, method: :delete, 
+                      class: "flex w-full items-center px-3 py-2 text-sm text-left text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors border-0 bg-transparent", 
+                      role: "menuitem", 
+                      form: { data: { turbo: false } } do %>
+                    <svg class="mr-3 h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+                    </svg>
+                    Sign Out
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
         <% else %>
+          <!-- Auth Links for Non-authenticated Users -->
           <div class="flex items-center space-x-2 hidden md:flex">
-            <%= link_to "Sign In", new_user_session_path, class: "text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors" %>
-            <%= link_to "Join Now", new_user_registration_path, class: "bg-gradient-to-r from-indigo-900 to-orange-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-indigo-800 hover:to-orange-400 transition-all duration-200 transform hover:scale-105" %>
+            <%= link_to "Sign In", new_user_session_path, 
+                class: "text-slate-700 hover:text-indigo-900 px-3 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-slate-50" %>
+            <%= link_to "Join Now", new_user_registration_path, 
+                class: "bg-gradient-to-r from-indigo-900 to-orange-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-indigo-800 hover:to-orange-400 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl" %>
           </div>
         <% end %>
 
         <!-- Mobile menu button -->
-        <button class="md:hidden p-2 text-slate-700 hover:text-indigo-900"
-                data-action="click->navigation#toggleMobile">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button class="lg:hidden p-2 text-slate-700 hover:text-indigo-900 rounded-lg hover:bg-slate-50 transition-colors"
+                data-action="click->navigation#toggleMobile"
+                data-navigation-target="mobileToggle">
+          <svg class="h-5 w-5 transition-transform duration-200" data-navigation-target="hamburgerIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg class="h-5 w-5 transition-transform duration-200 hidden" data-navigation-target="closeIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
     </div>
 
     <!-- Mobile Navigation Menu -->
-    <div class="md:hidden hidden" data-navigation-target="mobileMenu">
-      <div class="px-2 pt-2 pb-3 space-y-1 bg-white/90 backdrop-blur-md rounded-lg mt-2 border border-slate-200">
+    <div class="lg:hidden hidden transform transition-all duration-300 ease-in-out" 
+         data-navigation-target="mobileMenu"
+         data-action="click@window->navigation#handleOutsideClick">
+      <div class="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md rounded-xl mt-2 border border-slate-200 shadow-lg">
         <% if user_signed_in? %>
           <!-- Mobile User Info -->
-          <div class="flex items-center space-x-2 mb-4">
-            <%# Placeholder for user image or name %>
-            <span class="text-slate-700 text-base font-medium"><%= current_user.first_name || current_user.email %></span>
+          <div class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg mb-4">
+            <% if current_user.avatar.present? %>
+              <%= image_tag current_user.avatar, class: "w-10 h-10 rounded-full object-cover" %>
+            <% else %>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                <span class="text-white font-medium">
+                  <%= (current_user.first_name&.first || current_user.email.first).upcase %>
+                </span>
+              </div>
+            <% end %>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-900 truncate">
+                <%= current_user.first_name || current_user.email.split('@').first %>
+              </p>
+              <p class="text-xs text-slate-500 truncate">
+                <%= current_user.role.humanize %>
+              </p>
+            </div>
           </div>
-          <%= link_to "Profile", edit_user_registration_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
-          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "w-full text-left px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
+
+          <!-- Role-based Mobile Navigation -->
+          <% case current_user.role %>
+          <% when 'admin' %>
+            <%= link_to admin_dashboard_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors" do %>
+              🎛️ Admin Dashboard
+            <% end %>
+          <% when 'trader' %>
+            <%= link_to traders_dashboard_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors" do %>
+              📊 Trader Dashboard
+            <% end %>
+          <% when 'affiliate' %>
+            <%= link_to "#", class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors" do %>
+              🔗 Affiliate Dashboard
+            <% end %>
+          <% end %>
+
+          <%= link_to "Profile", edit_user_registration_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors" %>
+          
+          <div class="border-t border-slate-200 my-2"></div>
+          
+          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, 
+              data: { turbo_confirm: "Are you sure?" }, 
+              class: "w-full text-left px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors border-0 bg-transparent" %>
         <% else %>
-          <%= link_to "Sign In", new_user_session_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
-          <%= link_to "Join Now", new_user_registration_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
+          <%= link_to "Sign In", new_user_session_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors" %>
+          <%= link_to "Join Now", new_user_registration_path, class: "block px-3 py-2 text-base font-medium bg-gradient-to-r from-indigo-900 to-orange-500 text-white rounded-lg transition-all hover:from-indigo-800 hover:to-orange-400" %>
         <% end %>
 
-        <%= link_to "Products", "#", class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
-        <%= link_to "Categories", "#", class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
-        <%= link_to "How It Works", how_it_works_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
-        <%= link_to "Affiliate Program", affiliate_program_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-md" %>
+        <div class="border-t border-slate-200 pt-3 mt-3">
+          <%= link_to "Products", "#", class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors" %>
+          <%= link_to "Categories", "#", class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors" %>
+          <%= link_to "How It Works", how_it_works_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors" %>
+          <%= link_to "Affiliate Program", affiliate_program_path, class: "block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-slate-50 rounded-lg transition-colors" %>
+        </div>
 
+        <!-- Mobile Search -->
         <div class="border-t border-slate-200 pt-3 mt-3">
           <div class="px-3 py-2">
             <input type="text"
                    placeholder="Search products..."
-                   class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                   class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white/80 backdrop-blur-sm">
           </div>
         </div>
       </div>

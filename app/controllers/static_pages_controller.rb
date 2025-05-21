@@ -737,7 +737,7 @@ class StaticPagesController < ApplicationController
         discount: 20,
         rating: 4.8,
         commission: 15,
-        image: "/api/placeholder/300/300",
+        image: "/images/headphone.jpg",
         brand: "AudioTech Pro",
         category: "Electronics",
         url: "/products/premium-wireless-headphones"
@@ -750,7 +750,7 @@ class StaticPagesController < ApplicationController
         discount: 15,
         rating: 4.6,
         commission: 12,
-        image: "/api/placeholder/300/300",
+        image: "images/security-camera.jpg",
         brand: "SecureHome",
         category: "Smart Home",
         url: "/products/smart-security-camera"
@@ -763,7 +763,7 @@ class StaticPagesController < ApplicationController
         discount: 25,
         rating: 4.9,
         commission: 18,
-        image: "/api/placeholder/300/300",
+        image: "/images/office-chair.png",
         brand: "ErgoWork",
         category: "Furniture",
         url: "/products/ergonomic-office-chair"
@@ -776,7 +776,7 @@ class StaticPagesController < ApplicationController
         discount: 10,
         rating: 4.7,
         commission: 10,
-        image: "/api/placeholder/300/300",
+        image: "/images/waterproof-speaker.png",
         brand: "SoundWave",
         category: "Audio",
         url: "/products/portable-bluetooth-speaker"
@@ -789,7 +789,7 @@ class StaticPagesController < ApplicationController
         discount: 30,
         rating: 4.5,
         commission: 20,
-        image: "/api/placeholder/300/300",
+        image: "/images/fitness-tracker.png",
         brand: "FitTrack Pro",
         category: "Health & Fitness",
         url: "/products/fitness-tracker-watch"
@@ -802,7 +802,7 @@ class StaticPagesController < ApplicationController
         discount: 5,
         rating: 4.4,
         commission: 8,
-        image: "/api/placeholder/300/300",
+        image: "/imagres/fast-wireless-charging.png",
         brand: "ChargeTech",
         category: "Accessories",
         url: "/products/wireless-charging-pad"
